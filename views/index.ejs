@@ -1,261 +1,75 @@
-<!Doctype html>
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITCG - Actividades Extraescolares</title>
-    
-    <!--  BOOTSTRAP  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-<!-- FOONT AWESOME -->
-<script src="https://kit.fontawesome.com/9584a3d4cd.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css">
+    <title>Web Responsive</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-   <!--Header reservado para el logo -->
-    <header>
-        <img src="resources/encabezado.png" class="logo">
-        <!--Este será la etiquieta para el button -->
-        <label id="btnMenu" class="nav-bar"> <i class="fa-solid fa-bars"></i> </label>
-    </header>
-    <nav class="main-nav">
-        <!--Menu dividido en Items y Links -->
-        <ul class="menu" id="menu">
-            <li class="menu__item container-submenu">
-                <a class="menu__link submenu-btn" href="#">Inicio</a>
-                <!--Apartado de SubMenu -->
-                <ul class="submenu">
-                    <li class="menu__item"><a class="menu__link" href="inscripcion">Inscripción a Actividad Extraescolar</a></li>
-                    <li class="menu__item"> <a class="menu__link" href="loginPromotor"> Promotores </a> </li>
-                    <li class="menu__item"> <a class="menu__link" href="loginJefe"> Jefe de Departamento </a></li>
-                </ul>
-            </li>
-            <li class="menu__item"><a class="menu__link" href="mision">Información</a></li>
-            <li class="menu__item"><a class="menu__link" href="horarios">Horarios</a></li>
-            <li class="menu__item"><a class="menu__link" href="ejemplo">Contactos</a></li>
+    
+    <div class="container__header">
 
+        <header>
+            <div class="logo">
+                <img src="media/logo.png" alt="">
+            </div>
 
-        </ul>
+            <div class="menu">
 
-    </nav>
+                <nav>
+                    <ul>
+                        <li><a href="#">Alumnos</a></li>
+                        <li><a href="#">Promotores</a></li>
+                        <li><a href="#">Jefe Departamento</a></li>
+                        <li><a href="#">Información</a></li>
+                    </ul>
+                </nav>
 
+            </div>
+        </header>
 
-
-
-<main class="main">
-    <h3>Actividades Extraescolares </h3>
-    <div class="container">
-            
-                    
-
-                            
-        <table class="table table-bordered table-striped text-center mt-4">
-            <thead>
-              <tr class="bg-primary text-white">
-                <th scope="col">Id Actividad</th>
-                <th scope="col">Horario</th>
-                <th scope="col">Lugar</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              <!--Recibir los resultados de la consulta, almacenarlo en user y mostrarlos-->
-              <% results.forEach((user) => { %>
-              <!--los simbolos <%= %> son por el motor de plantillas ejs-->
-              <tr>
-                <td> <%= user.idActividad %></td>
-                <td> <%= user.horario %></td>
-                <td> <%= user.lugar %></td>
-                
-              </tr>
-              <% }) %>
-            </tbody>
-          </table>
-                                    
-                        
-                        
-
+        <i class="fa-solid fa-bars" id="icon_menu"></i>
         
-        
+
+        <div class="header__register">
+            <input type="button" class="btn__header-register" value="Inscripción">
+        </div>
+
     </div>
-</main>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <main>
 
+        <div class="cover">
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+            <div class="text__information-cover">
+                <h2>Actividades Extraescolares</h2>
+                <b>
+                    El Instituto Tecnológico de la Costa Grande establece el compromiso de implementar todos sus procesos, orientándolos hacia la satisfacción de sus clientes sustentada en la Calidad del Procesos Educativo, para cumplir cono sus requisitos, mediante la eficacia de un Sistema de Gestión de la Calidad y de mejora continua, conforme a la norma ISO 9001:2008/NMX-CC-9001-IMNC-2008
+                </b>
 
-<script type="text/javascript">
+                <div class="buttons__cover">
+                    <a class="btn__register-cover" href="">Inscribirse a una actividad</a>
+                    <a class="btn__register-cover" href="">Leer acerca de las actividades</a>
+                </div>
 
-    const btnMenu = document.querySelector("#btnMenu");
-    const subMenuBtn = document.querySelectorAll(".submenu-btn");
+            </div>
 
-    btnMenu.addEventListener("click", function(){
-        menu.classList.toggle("mostrar");
-    });
+            
 
-    for(let i = 0; i < subMenuBtn.length; i++){
-        subMenuBtn[i].addEventListener("click", function(){
+            <div class="media__cover">
+                <img src="resources/ajedrez.jpg" alt="">
+            </div>
 
-           if(window.innerWidth < 1024){
-                const subMenu = this.nextElementSibling;
-                const height = subMenu.scrollHeight;
-
-                if(subMenu.classList.contains("desplegar")){
-                    subMenu.classList.remove("desplegar");
-                    subMenu.removeAttribute("style");
-
-                }else{
-                    subMenu.classList.add("desplegar");
-                    subMenu.style.height = height + "px";
-                }
-           }
-
-        });
-    }
-</script>
-
-<style type="text/css">
-    *{
-        box-sizing: border-box;
-    }
-
-    header{
-        max-width: 100vw;
-    }
-
-    img{
-        width: 100vw;
-        max-width: 100vw;
-    }
-
-    .logo{
-        height: 70px;
-        
-    }
-
-    body{
-        margin: 0;
-        /* background: url(https://www.xtrafondos.com/wallpapers/vertical/textura-reciclado-arrugado-azul-64.jpg);*/
-   
-    }
-    .container{
-        box-shadow: 5px 10px 5px 10px #888888;
-    }
-
-    h3{
-        text-align: center;
-        padding-top: 10px;
-        padding-bottom: 20px;
-    }
-
-    .nav-bar{
-        color: rgb(26, 26, 65);
-        padding: 20px;
-        width: 100%;
-        background: #2fa595;
-        font-size: 1.2em;
-        display: block;
-        cursor: pointer;
-
-    }
-
-    .menu, .submenu{
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu{
-        background: #2fa595;
-        width: 100%;
-        margin-left: -100%;
-        transition: all 0.5s;
-        position: absolute;
-    }
-
-    .menu__link{
-        display: block;
-        padding: 20px;
-        font-size: 1.2em;
-        text-decoration: none;
-        color: black;
-    }
-
-    .menu__link:hover{
-        background: #92d6eb;
-    }
-
-    .submenu .menu__link:hover{
-        background: #78E7F1;
-    }
-
-    .submenu{
-        height: 0;
-        overflow: hidden;
-        transition: all 0.3s;
-    }
-
-    .submenu .menu__link{
-        padding: 40px;
-        background: #E4E879;
-    }
-
-    .mostrar{
-        margin-left: 0;
-    }
+        </div>
 
 
-@media(min-width: 1024px){
-    .nav-bar{
-        display: none;
-    }
 
-    .logo{
-        height: 80px;
-    }
+    </main>
 
-    header{
-        align-content: center;
-        align-items: center;
-        text-align: center;
-    }
 
-    .menu{
-        margin-left: 0;
-        display: flex;
-        padding-left: 45%;
-        position: relative;
-    }
 
-    .container-submenu{
-        position: relative;
-    }
-
-    .submenu{
-        position: absolute;
-        top: 60px;
-        width: 200px;
-        overflow: visible;
-        z-index: 1000;
-        visibility: hidden;
-        cursor: pointer;
-    }
-
-    .container-submenu:hover .submenu{
-        opacity: 1;
-        visibility: visible;
-    }
-
-}
-
-</style>
+    <script src="script.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
-
 </html>
