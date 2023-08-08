@@ -153,19 +153,11 @@ main {
 }
 
 @media (max-width: 920px) {
-  .cover {
-    flex-direction: row;
-  }
-}
-
-@media (max-width: 600px) {
-  .cover {
-    flex-direction: column;
+  .text__information-cover {
+    width: 100%;
   }
 
-  .media__cover img {
-    margin-top: 20px;
-    width: 70vw;
-    max-width: 70vw;
+  .media__cover {
+    display: none;
   }
 }
