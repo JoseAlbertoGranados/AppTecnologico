@@ -160,4 +160,8 @@ main {
   .media__cover {
     display: none;
   }
+
+  .btn__register-cover {
+    margin-left: 0px;
+  }
 }
