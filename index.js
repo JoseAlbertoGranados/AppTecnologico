@@ -265,7 +265,7 @@ app.get("/listaAlumnos", (req, res) => {
   if (req.session.loggedin) {
     conection.query("SELECT * FROM alumnos", (error, results) => {
       if (error) {
-        console.log(error);
+        res.send("Error en la busqueda de datos");
       } else {
         res.render("listaAlumnos", {
           results: results,
@@ -285,9 +285,9 @@ app.get("/listaAlumnos", (req, res) => {
 //Lista De Promotores Para El Jefe de Departamento
 app.get("/listaPromotor", (req, res) => {
   if (req.session.loggedin) {
-    conection.query("SELECT * FROM Promotores", (error, results) => {
+    conection.query("SELECT * FROM promotores", (error, results) => {
       if (error) {
-        res.send("Error al obtener datos");
+        res.send("Error en la busqueda de datos");
       } else {
         res.render("listaPromotor", {
           results: results,
@@ -299,7 +299,7 @@ app.get("/listaPromotor", (req, res) => {
   } else {
     res.render("loginJefe", {
       login: false,
-      name: "Debes iniciar sesión",
+      name: "Debes Iniciar Sesión",
     });
   }
 });
