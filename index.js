@@ -31,7 +31,7 @@ app.use(
 
 //Invocar conecxión a la base de datos
 import conection from "./database/db.js";
-import { render } from "ejs";
+import { name, render } from "ejs";
 
 //Rutas
 app.get("/loginJefe", (req, res) => {
@@ -285,9 +285,16 @@ app.get("/listaAlumnos", (req, res) => {
 //Lista De Promotores Para El Jefe de Departamento
 app.get("/listaPromotor", (req, res) => {
   if (req.session.loggedin) {
-    res.render("listaPromotor", {
-      login: true,
-      name: req.session.name,
+    conection.query("SELECT * FROM Promotores", (error, resultados) => {
+      if (resultados) {
+        res.render("listaPromotor", {
+          results: resultados,
+          login: true,
+          name: req.session.name,
+        });
+      } else {
+        res.send("Error al obtener datos");
+      }
     });
   } else {
     res.render("loginJefe", {

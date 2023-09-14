@@ -18,7 +18,7 @@ try {
   console.log("conexion exitosa");
 } catch (error) {
   console.log({
-    msg: "sSucedió un error al conectarse a la Base de Datos",
+    msg: "Sucedió un error al conectarse a la Base de Datos",
     falla: error,
   });
 }

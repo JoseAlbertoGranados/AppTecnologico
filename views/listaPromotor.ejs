@@ -134,9 +134,9 @@ ul li a{
     
                 
     
-                <?php } ?>
+                
                     
-                    <form action="savePromotor.php" method="POST" >
+                    <form action="savePromotor" method="POST" >
                         
     
                         <p> Nombre de promotor: </p>
@@ -215,30 +215,27 @@ ul li a{
                     </thead>
     
                     <tbody>
-                        <?php
-                            $query = $conn->prepare("SELECT * FROM promotores");
-                            //$resultado = pg_query($conn, $query);
-                            $query->execute();
-                            while($row = $query->fetch(PDO::FETCH_ASSOC)) { 
+                        
+                            <% results.forEach( (promotor) => { %>
                                 
-                                ?>
+                                
                                 <tr>
-                                    <td><?php echo $row["idPromotor"] ?></td>
-                                    <td><?php echo $row["nombrePromotor"] ?> </td>
-                                        <td><?php echo $row["apellidoPaterno"] ?> </td>
-                                        <td><?php echo $row["apellidoMaterno"] ?></td>
-                                        <td><?php echo $row['idActivi'] ?></td>
-                                        <td><?php echo $row["email"] ?></td>
+                                    <td><%= promotor.idPromotor %></td>
+                                    <td><%= promotor.nombrePromotor %> </td>
+                                        <td><%= promotor.apellidoPaterno %> </td>
+                                        <td><%= promotor.apellidoMaterno %></td>
+                                        <td><%= promotor.idActivi %></td>
+                                        <td><%= promotor.email %></td>
                                         
                                         <td>
-                                            <form action="eliminarPromotor.php" method="POST">
-                                                <input type="hidden" name="idPromotor" value="<?php echo $row['idPromotor'] ?>">
+                                            <form action="eliminarPromotor." method="POST">
+                                                <input type="hidden" name="idPromotor" value="<? echo $row['idPromotor'] ?>">
                                                 
                                                 <input type="submit" name="eliminar" class="btn btn-danger" value="Eliminar" onclick="return confirmacion()">
                                                 
                                             </form>
                                             <!--
-                                            <a href="eliminarPromotor.php?idpromo=<?php // echo $row['idPromotor']?>" class="btn btn-danger" >
+                                            <a href="eliminarPromotor.?idpromo=<? // echo $row['idPromotor']?>" class="btn btn-danger" >
                                                 
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
@@ -248,8 +245,8 @@ ul li a{
     
                                         <td>
     
-                                            <form action="editarPromotor.php" method="POST">
-                                                <input type="hidden" name="idPromo" value="<?php echo $row['idPromotor']?>">
+                                            <form action="editarPromotor." method="POST">
+                                                <input type="hidden" name="idPromo" value="<? echo $row['idPromotor']?>">
                                                 <input type="submit" value="Editar" class="btn btn-success">
                                             </form>
     
@@ -260,7 +257,7 @@ ul li a{
                                     
                                 </tr>
                             
-                            <?php } ?>
+                            <% }) %>
     
     
                     </tbody>
@@ -274,17 +271,7 @@ ul li a{
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
 
-    <script type="text/javascript">
-        function confirmacion(){
-            var respuesta = confirm("¿Desea eliminar este registro?");
     
-            if(respuesta === true){
-                return true;
-            }else{
-                return false;
-            }
-        }
-    </script>
 
     	<!-- SCRIPTS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
