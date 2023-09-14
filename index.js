@@ -285,15 +285,15 @@ app.get("/listaAlumnos", (req, res) => {
 //Lista De Promotores Para El Jefe de Departamento
 app.get("/listaPromotor", (req, res) => {
   if (req.session.loggedin) {
-    conection.query("SELECT * FROM Promotores", (error, resultados) => {
-      if (resultados) {
+    conection.query("SELECT * FROM Promotores", (error, results) => {
+      if (error) {
+        res.send("Error al obtener datos");
+      } else {
         res.render("listaPromotor", {
-          results: resultados,
+          results: results,
           login: true,
           name: req.session.name,
         });
-      } else {
-        res.send("Error al obtener datos");
       }
     });
   } else {
