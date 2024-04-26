@@ -1,8 +1,5 @@
 import mysql2 from "mysql2";
 import dotenv from "dotenv";
-export NODE_TLS_REJECT_UNAUTHORIZED='0'
-node app.js
-
 dotenv.config();
 
 const conection = mysql2.createConnection({
