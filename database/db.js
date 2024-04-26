@@ -8,9 +8,6 @@ const conection = mysql2.createConnection({
   port: process.env.PORT,
   host: process.env.HOST,
   password: process.env.PASSWORD,
-  ssl: {
-    rejectUnauhorized: false,
-  },
 });
 
 try {
