@@ -186,11 +186,14 @@ app.get("/", (req, res) => {
 //Visualizar Horarios de actividades
 app.get("/horarios", (req, res) => {
   try {
-    conection.query("SELECT * FROM actividades", (error, results) => {
-      res.render("index", {
-        results: results,
-      });
-    });
+    conection.query(
+      "SELECT * FROM actividades, promotores WHERE idPromotor = idActividad",
+      (error, results) => {
+        res.render("horarios", {
+          results: results,
+        });
+      }
+    );
   } catch (error) {
     res.send(error);
   }
@@ -263,17 +266,20 @@ app.get("/menuInicio", (req, res) => {
 //Lista de alumnos para el jefe de departamento
 app.get("/listaAlumnos", (req, res) => {
   if (req.session.loggedin) {
-    conection.query("SELECT * FROM alumnos", (error, results) => {
-      if (error) {
-        res.send("Error en la busqueda de datos");
-      } else {
-        res.render("listaAlumnos", {
-          results: results,
-          login: true,
-          name: req.session.name,
-        });
+    conection.query(
+      "SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+      (error, results) => {
+        if (error) {
+          res.send("Error en la busqueda de datos");
+        } else {
+          res.render("listaAlumnos", {
+            results: results,
+            login: true,
+            name: req.session.name,
+          });
+        }
       }
-    });
+    );
   } else {
     res.render("loginJefe", {
       login: false,
@@ -304,6 +310,31 @@ app.get("/listaPromotor", (req, res) => {
   }
 });
 
+//Visualizar las actividades
+app.get("/actividades", (req, res) => {
+  if (req.session.loggedin) {
+    conection.query(
+      "SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+      (error, results) => {
+        if (error) {
+          res.send("Error en la busqueda de datos");
+        } else {
+          res.render("listaAlumnos", {
+            results: results,
+            login: true,
+            name: req.session.name,
+          });
+        }
+      }
+    );
+  } else {
+    res.render("loginJefe", {
+      login: false,
+      name: "Debes Iniciar Sesión",
+    });
+  }
+});
+
 //Crear Alumnos Por Parte del Jefe
 app.get("/crearAlumnos", (req, res) => {
   var consultaPromotores = "SELECT * FROM promotores";
@@ -318,19 +349,22 @@ app.get("/crearAlumnos", (req, res) => {
       } else {
         //resPromotor = results;
         //console.log(promotores);
-        conection.query("SELECT * FROM alumnos", (error, alumnos) => {
-          if (error) {
-            console.log(error);
-          } else {
-            //console.log(alumnos);
-            res.render("crearAlumnos", {
-              login: true,
-              name: req.session.name,
-              resultados: promotores,
-              listaAlumnos: alumnos,
-            });
+        conection.query(
+          "SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+          (error, alumnos) => {
+            if (error) {
+              console.log(error);
+            } else {
+              //console.log(alumnos);
+              res.render("crearAlumnos", {
+                login: true,
+                name: req.session.name,
+                resultados: promotores,
+                listaAlumnos: alumnos,
+              });
+            }
           }
-        });
+        );
       }
     });
   } else {
