@@ -6,6 +6,7 @@ dotenv.config();
 const conection = mysql2.createConnection({
   database: process.env.DATABASE,
   user: process.env.USER,
+  port: process.env.PORT,
   host: process.env.HOST,
   password: process.env.PASSWORD,
   ssl: {
