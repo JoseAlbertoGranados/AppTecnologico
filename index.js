@@ -275,7 +275,8 @@ app.get("/menuInicio", (req, res) => {
 app.get("/listaAlumnos", (req, res) => {
   if (req.session.loggedin) {
     conection.query(
-      "SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+      //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+      "SELECT * FROM alumnos",
       (error, results) => {
         if (error) {
           res.send("Error en la busqueda de datos");

@@ -200,15 +200,18 @@ ul li a{
                 <tbody>       
                         <% results.forEach( (alumno) => { %>
                             <tr>
-                                <td><%= alumno.nc %> </td>
+                                <td><%= alumno.umero_control %> </td>
                                     <td><%= alumno.nombre %> </td>
-                                    <td><%= alumno.apellidoPaterno %></td>
-                                    <td><%= alumno.apellidoMaterno %></td>
+                                    <td><%= alumno.apellido_paterno %></td>
+                                    <td><%= alumno.apellido_materno %></td>
+                                    <td><%= alumno.genero %></td>
                                     <td><%= alumno.carrera %></td>
-                                    <td><%= alumno.email %></td>
+                                    <td><%= alumno.correo %></td>
                                     <td><%= alumno.telefono %></td>
                                     <td><%= alumno.semestre %></td>
-                                    <td><%= alumno.idActivi %></td>
+                                    <td><%= alumno.idActividad %></td>
+                                    <td><%= alumno.actividad %></td>
+
                                     <td>
                                         
 
