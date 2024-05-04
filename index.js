@@ -297,6 +297,26 @@ app.get("/listaAlumnos", (req, res) => {
   }
 });
 
+//Prueba para tabla de alumnos
+//Lista de alumnos para el jefe de departamento
+app.get("/prueba", (req, res) => {
+  conection.query(
+    //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+    "SELECT * FROM alumnos",
+    (error, results) => {
+      if (error) {
+        res.send("Error en la busqueda de datos");
+      } else {
+        res.render("listaAlumnos", {
+          results: results,
+          login: true,
+          name: req.session.name,
+        });
+      }
+    }
+  );
+});
+
 //Lista De Promotores Para El Jefe de Departamento
 app.get("/listaPromotor", (req, res) => {
   if (req.session.loggedin) {
