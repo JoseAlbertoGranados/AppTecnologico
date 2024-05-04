@@ -308,7 +308,7 @@ app.get("/prueba", (req, res) => {
       if (error) {
         res.send("Error en la busqueda de datos");
       } else {
-        res.render("listaAlumnos", {
+        res.render("prueba", {
           results: results,
           login: true,
           name: req.session.name,
