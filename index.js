@@ -38,13 +38,14 @@ app.get("/loginJefe", (req, res) => {
   res.render("loginJefe");
 });
 
-app.get("/prueba", (req, res) => {
+/*app.get("/prueba", (req, res) => {
   var pass = "Amanecer";
   var salt = bcryptjs.genSaltSync(10);
   var passHaas = bcryptjs.hashSync(pass, salt);
 
   res.send(passHaas);
 });
+*/
 
 app.get("/loginPromotor", (req, res) => {
   res.render("loginPromotor");
