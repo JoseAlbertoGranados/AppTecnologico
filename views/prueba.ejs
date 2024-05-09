@@ -694,7 +694,18 @@
 }
 
 </style>
-    <script type="text/javascript">
+<script type="text/javascript">
+
+function confirmacion(){
+		var respuesta = confirm("¿Desea eliminar el registro?");
+		if(respuesta === true){
+			return true;
+		}else{
+			return false;
+		}
+}
+
+
 	
 	const icono = document.querySelector("#navbtn");
 	menu = document.querySelector("#menu");
