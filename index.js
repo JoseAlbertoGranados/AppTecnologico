@@ -20,6 +20,8 @@ const port = process.env.PORT || 3000;
 //Motor de plantillas ejs
 app.set("view engine", "ejs");
 
+//DOCXTemplater
+
 //Variable de sesion
 app.use(
   session({
@@ -46,6 +48,10 @@ app.get("/loginJefe", (req, res) => {
   res.send(passHaas);
 });
 */
+
+app.get("/documentos", (req, res) => {
+  res.render("documentos");
+});
 
 app.get("/loginPromotor", (req, res) => {
   res.render("loginPromotor");

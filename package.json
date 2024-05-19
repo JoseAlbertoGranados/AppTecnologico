@@ -16,11 +16,13 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "docxtemplater": "^3.47.2",
     "dotenv": "^16.1.4",
     "ejs": "^3.1.9",
     "express": "^4.18.3",
     "express-session": "^1.17.3",
-    "mysql2": "^3.3.3"
+    "mysql2": "^3.3.3",
+    "pizzip": "^3.1.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
