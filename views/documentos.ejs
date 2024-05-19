@@ -13,6 +13,8 @@ Mandatory in IE 6, 7, 8 and 9.
                 src="https://unpkg.com/pizzip@3.1.6/dist/pizzip-utils-ie.js"
             ></script>
         <![endif]-->
+        <input id="mensaje" type="text" disabled value="<%=mensaje%>">
+        <input id="mensaje2" type="text" disabled value="<%=mensaje2%>">
         <input type="file" id="doc" />
         <button onclick="generate()">Generate document</button>
         <script>
@@ -36,10 +38,13 @@ Mandatory in IE 6, 7, 8 and 9.
                         linebreaks: true,
                     });
                     
+                    //Get datas
+                    var valor1 = document.getElementById('mensaje').value
+                    var valor2 = document.getElementById('mensaje2').value
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
                     doc.render({
-                        first_name: "Jose Alberto",
-                        last_name: "Granados",
+                        first_name: valor1,
+                        last_name: valor2,
                         phone: "0652455478",
                         description: "New Website",
                     });
