@@ -50,8 +50,8 @@ app.get("/loginJefe", (req, res) => {
 */
 
 app.get("/documentos", (req, res) => {
-  const saludo = "Jose Alberto";
-  const saludo2 = "Granados";
+  var saludo = "Jose Alberto";
+  var saludo2 = "Granados";
   res.render("documentos", {
     mensaje: saludo,
     mensaje2: saludo2,
