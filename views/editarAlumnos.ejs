@@ -40,60 +40,58 @@
         </ul>
       </nav>
       <div id="ventana" class="ventana">
-        <main class="table">
-            <% if(results){ %>
-                <section class="container">
-                  <header>Datos de alumno a editar</header>
-                  <form action="#" class="form">
+        <% if(results){ %>
+            <section class="container">
+              <header>Datos de alumno a editar</header>
+              <form action="#" class="form">
+                <div class="input-box">
+                  <label>Número de control</label>
+                  <input id="nc" name="id" type="text" value="<%= results.numero_control %>" />
+                </div>
+                
+                <div class="input-box">
+                    <label>Nombre Alumno</label>
+                    <input id="nc" name="id" type="text" value="<%= results.numero_control %>" />
+                </div>
+                
+                <div class="column">
                     <div class="input-box">
-                      <label>Número de control</label>
-                      <input id="nc" name="id" type="text" value="<%= results.numero_control %>" />
+                      <label>Apellido Paterno</label>
+                      <input type="text" id="apellido_paterno" name="apellido_paterno"  value="<%= results.apellido_paterno %>" />
                     </div>
-                    
                     <div class="input-box">
-                        <label>Nombre Alumno</label>
-                        <input id="nc" name="id" type="text" value="<%= results.numero_control %>" />
+                      <label>Apellido Materno</label>
+                      <input type="text" id="apellido_materno" name="apellido_paterno"  value="<%= results.apellido_materno %>" />
                     </div>
-                    
-                    <div class="column">
-                        <div class="input-box">
-                          <label>Apellido Paterno</label>
-                          <input type="text" id="apellido_paterno" name="apellido_paterno"  value="<%= results.apellido_paterno %>" />
-                        </div>
-                        <div class="input-box">
-                          <label>Apellido Materno</label>
-                          <input type="text" id="apellido_materno" name="apellido_paterno"  value="<%= results.apellido_materno %>" />
-                        </div>
-                      </div>
-            
-                    <div class="column">
-                      <div class="input-box">
-                        <label>Telefono</label>
-                        <input type="text" id="telefono" name="telefono"  value="<%= results.telefono %>" />
-                      </div>
-                      <div class="input-box">
-                        <label>Carrera</label>
-                        <input type="text" id="carrera" name="carrera"  value="<%= results.carrera %>" />
-                      </div>
+                  </div>
+        
+                <div class="column">
+                  <div class="input-box">
+                    <label>Telefono</label>
+                    <input type="text" id="telefono" name="telefono"  value="<%= results.telefono %>" />
+                  </div>
+                  <div class="input-box">
+                    <label>Carrera</label>
+                    <input type="text" id="carrera" name="carrera"  value="<%= results.carrera %>" />
+                  </div>
+                </div>
+                
+                <div class="column">
+                    <div class="input-box">
+                      <label>Semestre</label>
+                      <input type="text" id="Semestre" name="Semestre"  value="<%= results.semestre %>" />
                     </div>
-                    
-                    <div class="column">
-                        <div class="input-box">
-                          <label>Semestre</label>
-                          <input type="text" id="Semestre" name="Semestre"  value="<%= results.semestre %>" />
-                        </div>
-                        <div class="input-box">
-                          <label>Actividad</label>
-                          <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
-                        </div>
+                    <div class="input-box">
+                      <label>Actividad</label>
+                      <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
                     </div>
-                    
-                    <button>Submit</button>
-                  </form>
-                </section>
-                <% } %>
-          
-        </main>
+                </div>
+                
+                <button>Submit</button>
+              </form>
+            </section>
+            <% } %>
+      
       </div>
     </div>
     <style type="text/css">
