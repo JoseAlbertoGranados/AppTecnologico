@@ -102,14 +102,20 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="editarAlumno.php" method="POST">
-                                    <input type="hidden" name="nc" value="<?php echo $row['nc']?>">
+                                <form action="/editarAlumno/<%= alumno.numero_control %>" method="POST">
+                                    <input type="hidden" name="nc" value="<%= alumno.numero_control %>">
                                     <input type="submit" name="actualizar" value="Editar" class="button-editar">
 									
                                 </form>
                             </td>
 
-                            
+                            <td>
+                                <form action="/documentos" method="POST">
+                                    <input type="hidden" name="nc" value="<?php echo $row['nc']?>">
+                                    <input type="submit" name="constancia" value="Constancia" class="button-editar">
+									
+                                </form>
+                            </td>
                         
                     </tr>
                 <% } ) %>

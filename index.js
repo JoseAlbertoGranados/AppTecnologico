@@ -351,6 +351,9 @@ app.get("/listaPromotor", (req, res) => {
   }
 });
 
+//Ruta para editar registros de alumnos
+app.get("/editarAlumnos/:nc");
+
 //Visualizar las actividades
 app.get("/actividades", (req, res) => {
   if (req.session.loggedin) {
