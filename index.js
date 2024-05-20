@@ -357,7 +357,8 @@ app.get("/editarAlumnos/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
 
   conection.query(
-    "SELECT * FROM alumnos WHERE numero_control = ?, [numero_control]",
+    "SELECT * FROM alumnos WHERE numero_control = ?",
+    [numero_control],
     (error, results) => {
       if (error) {
         res.send("Error en la busqueda de datos");
