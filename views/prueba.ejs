@@ -8,6 +8,9 @@
     <link rel="SHORTCUT ICON" href="itcg.jpg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/9584a3d4cd.js" crossorigin="anonymous"></script>
 
+	<!-- SWEET ALERT-->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
+
 	<!-- links para exportar a excel -->
     <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
@@ -97,7 +100,7 @@
                                 <form action="/eliminarAlumno" method="POST">
                                     <input type="hidden" name="nc" value="<%= alumno.numero_control %>">
                                     
-                                    <input type="submit" name="eliminar" class="button-eliminar" value="Eliminar" onclick="return confirmacion()">
+                                    <input type="submit" name="eliminar" class="button-eliminar" value="Eliminar" onclick="return confirmacion2()">
                                     
                                 </form>
                             </td>
@@ -702,7 +705,7 @@
 
 </style>
 <script type="text/javascript">
-
+/*Función para eliminar registros*/
 function confirmacion(){
 		var respuesta = confirm("¿Desea eliminar el registro?");
 		if(respuesta === true){
@@ -711,6 +714,27 @@ function confirmacion(){
 			return false;
 		}
 }
+
+/*Función con SweetAlert*/
+function confirmacion2(){
+	swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
+}
+
 
 
 	
