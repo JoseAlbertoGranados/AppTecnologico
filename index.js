@@ -50,13 +50,22 @@ app.get("/loginJefe", (req, res) => {
 */
 
 //Edicion de documentos
-app.get("/documentos", (req, res) => {
-  var saludo = "Jose Alberto";
-  var saludo2 = "Granados";
-  res.render("documentos", {
-    mensaje: saludo,
-    mensaje2: saludo2,
-  });
+app.get("/documentos/:numero_control", (req, res) => {
+  const numero_control = req.params.numero_control;
+
+  conection.query(
+    "SELECT * FROM alumnos WHERE numero_control = ?",
+    [numero_control],
+    (error, results) => {
+      if (error) {
+        res.send("Error en la busqueda de datos");
+      } else {
+        res.render("documentos", {
+          results: results[0],
+        });
+      }
+    }
+  );
 });
 
 app.get("/loginPromotor", (req, res) => {

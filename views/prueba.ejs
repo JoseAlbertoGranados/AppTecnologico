@@ -106,11 +106,7 @@
                             </td>
 
                             <td>
-                                <form action="/documentos" method="GET">
-                                    <input type="hidden" name="nc" value="<?php echo $row['nc']?>">
-                                    <input type="submit" name="constancia" value="Constancia" class="button-editar">
-									
-                                </form>
+								<a value="Constancia" class="button-editar" href="/documentos/<%= alumno.numero_control %>">Constancia</a>
                             </td>
                         
                     </tr>
@@ -678,12 +674,12 @@
   cursor: pointer;
   display: inline-block;
   font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 800;
   line-height: 16px;
   min-height: 40px;
   outline: 0;
-  padding: 12px 14px;
+  padding: 5px 7px;
   text-align: center;
   text-rendering: geometricprecision;
   text-transform: none;
