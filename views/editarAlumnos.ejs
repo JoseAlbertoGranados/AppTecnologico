@@ -43,66 +43,51 @@
         <main class="table">
             <% if(results){ %>
                 <section class="container">
-                  <header>Registration Form</header>
+                  <header>Datos de alumno a editar</header>
                   <form action="#" class="form">
                     <div class="input-box">
                       <label>Número de control</label>
-                      <input id="nc" name="id" type="text" disabled value="<%= results.numero_control %>" />
+                      <input id="nc" name="id" type="text" value="<%= results.numero_control %>" />
                     </div>
-            
+                    
                     <div class="input-box">
-                      <label>Email Address</label>
-                      <input type="text" id="nombre" name="nombre" disabled value="<%= results.nombre %>" />
+                        <label>Nombre Alumno</label>
+                        <input id="nc" name="id" type="text" value="<%= results.numero_control %>" />
                     </div>
+                    
+                    <div class="column">
+                        <div class="input-box">
+                          <label>Apellido Paterno</label>
+                          <input type="text" id="apellido_paterno" name="apellido_paterno"  value="<%= results.apellido_paterno %>" />
+                        </div>
+                        <div class="input-box">
+                          <label>Apellido Materno</label>
+                          <input type="text" id="apellido_materno" name="apellido_paterno"  value="<%= results.apellido_materno %>" />
+                        </div>
+                      </div>
             
                     <div class="column">
                       <div class="input-box">
-                        <label>Phone Number</label>
-                        <input type="text" id="apellido" name="nombre" disabled value="<%= results.apellido_paterno %>" />
+                        <label>Telefono</label>
+                        <input type="text" id="telefono" name="telefono"  value="<%= results.telefono %>" />
                       </div>
                       <div class="input-box">
-                        <label>Birth Date</label>
-                        <input type="date" placeholder="Enter birth date" required />
+                        <label>Carrera</label>
+                        <input type="text" id="carrera" name="carrera"  value="<%= results.carrera %>" />
                       </div>
                     </div>
-                    <div class="gender-box">
-                      <h3>Gender</h3>
-                      <div class="gender-option">
-                        <div class="gender">
-                          <input type="radio" id="check-male" name="gender" checked />
-                          <label for="check-male">male</label>
+                    
+                    <div class="column">
+                        <div class="input-box">
+                          <label>Semestre</label>
+                          <input type="text" id="Semestre" name="Semestre"  value="<%= results.semestre %>" />
                         </div>
-                        <div class="gender">
-                          <input type="radio" id="check-female" name="gender" />
-                          <label for="check-female">Female</label>
+                        <div class="input-box">
+                          <label>Actividad</label>
+                          <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
                         </div>
-                        <div class="gender">
-                          <input type="radio" id="check-other" name="gender" />
-                          <label for="check-other">prefer not to say</label>
-                        </div>
-                      </div>
                     </div>
-                    <div class="input-box address">
-                      <label>Address</label>
-                      <input type="text" placeholder="Enter street address" required />
-                      <input type="text" placeholder="Enter street address line 2" required />
-                      <div class="column">
-                        <div class="select-box">
-                          <select>
-                            <option hidden>Country</option>
-                            <option>America</option>
-                            <option>Japan</option>
-                            <option>India</option>
-                            <option>Nepal</option>
-                          </select>
-                        </div>
-                        <input type="text" placeholder="Enter your city" required />
-                      </div>
-                      <div class="column">
-                        <input type="text" placeholder="Enter your region" required />
-                        <input type="number" placeholder="Enter postal code" required />
-                      </div>
-                    </div>
+                    
                     <button>Submit</button>
                   </form>
                 </section>
