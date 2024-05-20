@@ -94,8 +94,8 @@
                             <td>
                                 
 
-                                <form action="eliminarAlumno.php" method="POST">
-                                    <input type="hidden" name="nc" value="<?php echo $row['nc'] ?>">
+                                <form action="/eliminarAlumno" method="POST">
+                                    <input type="hidden" name="nc" value="<%= alumno.numero_control %>">
                                     
                                     <input type="submit" name="eliminar" class="button-eliminar" value="Eliminar" onclick="return confirmacion()">
                                     
@@ -656,7 +656,7 @@
 
 @media (min-width: 768px) {
   .button-editar {
-    padding: 10px 30px;
+    padding: 5px 15px;
   }
 }
 
