@@ -716,8 +716,8 @@ function confirmacion(){
 }
 
 /*Función con SweetAlert*/
-function confirmacion2(){
-	swal({
+function confirma(){
+swal({
   title: "Are you sure?",
   text: "Once deleted, you will not be able to recover this imaginary file!",
   icon: "warning",
@@ -729,12 +729,13 @@ function confirmacion2(){
     swal("Poof! Your imaginary file has been deleted!", {
       icon: "success",
     });
+	return true;
   } else {
     swal("Your imaginary file is safe!");
+	return false;
   }
 });
 }
-
 
 
 	
