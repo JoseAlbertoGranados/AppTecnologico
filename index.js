@@ -49,6 +49,7 @@ app.get("/loginJefe", (req, res) => {
 });
 */
 
+//Edicion de documentos
 app.get("/documentos", (req, res) => {
   var saludo = "Jose Alberto";
   var saludo2 = "Granados";
@@ -352,7 +353,22 @@ app.get("/listaPromotor", (req, res) => {
 });
 
 //Ruta para editar registros de alumnos
-app.get("/editarAlumnos/:nc");
+app.get("/editarAlumnos/:nc", (req, res) => {
+  const id = req.params.id;
+
+  conection.query(
+    "SELECT * FROM alumnos WHERE numero_control = ?, [id]",
+    (error, results) => {
+      if (error) {
+        res.send("Error en la busqueda de datos");
+      } else {
+        res.render("editarAlumnos", {
+          results: results[0],
+        });
+      }
+    }
+  );
+});
 
 //Visualizar las actividades
 app.get("/actividades", (req, res) => {

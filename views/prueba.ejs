@@ -102,11 +102,8 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="/editarAlumno/<%= alumno.numero_control %>" method="POST">
-                                    <input type="hidden" name="nc" value="<%= alumno.numero_control %>">
-                                    <input type="submit" name="actualizar" value="Editar" class="button-editar">
-									
-                                </form>
+
+								<a value="Editar" class="button-editar" href="/editarAlumno/<%= alumno.numero_control %>"></a>
                             </td>
 
                             <td>
