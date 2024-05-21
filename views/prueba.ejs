@@ -711,13 +711,13 @@ function confirmacion(){
 /*Función con SweetAlert*/
 function confirmar(nc){
 	Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
+  title: "¿Está seguro de eliminar el registro?",
+  text: "Una vez hecho, no se recuperan los datos",
   icon: "warning",
   showCancelButton: true,
   confirmButtonColor: "#3085d6",
   cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
+  confirmButtonText: "Si, Eliminar"
 }).then((result) => {
   if (result.isConfirmed) {
     window.location = "/eliminarAlumno/"+nc
