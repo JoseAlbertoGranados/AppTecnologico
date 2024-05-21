@@ -125,6 +125,7 @@ app.post("/inscribir", (req, res) => {
     [numero, nombre, paterno, materno, carrera, telefono, semestre, actividad],
     (error, results) => {
       if (error) {
+        console.log(error);
         conection.query("SELECT * FROM alumnos", (errorAlumno, alumnos) => {
           if (errorAlumno) {
             console.log(errorAlumno);
