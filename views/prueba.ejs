@@ -95,7 +95,8 @@
                             <td><%= alumno.actividad %></td>
 
                             <td>
-                                <a onclick="confirmar(<%= alumno.numero_control %>)">Eliminar</a>
+                                
+								<a onclick="confirmar(<%= alumno.numero_control %>)" value="Eliminar" class="button-eliminar">Eliminar</a>
                             </td>
                             <td>
 								<a value="Editar" class="button-editar" href="/editarAlumnos/<%= alumno.numero_control %>">Editar</a>
