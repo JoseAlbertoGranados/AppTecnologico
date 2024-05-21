@@ -95,14 +95,7 @@
                             <td><%= alumno.actividad %></td>
 
                             <td>
-                                
-
-                                <form action="/eliminarAlumno" method="POST">
-                                    <input type="hidden" name="nc" value="<%= alumno.numero_control %>">
-                                    
-                                    <input type="submit" name="eliminar" class="button-eliminar" value="Eliminar" onclick="return confirma()">
-                                    
-                                </form>
+                                <a onclick="confirmar(<%= alumno.numero_control %>)"></a>
                             </td>
                             <td>
 								<a value="Editar" class="button-editar" href="/editarAlumnos/<%= alumno.numero_control %>">Editar</a>
@@ -716,23 +709,18 @@ function confirmacion(){
 }
 
 /*Función con SweetAlert*/
-function confirma(){
-swal({
+function confirmar(nc){
+	Swal.fire({
   title: "Are you sure?",
-  text: "Once deleted, you will not be able to recover this imaginary file!",
+  text: "You won't be able to revert this!",
   icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    swal("Poof! Your imaginary file has been deleted!", {
-      icon: "success",
-    });
-	return true;
-  } else {
-    swal("Your imaginary file is safe!");
-	return false;
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location = "/eliminarAlumno/"+nc
   }
 });
 }
