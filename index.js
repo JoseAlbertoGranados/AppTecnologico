@@ -107,6 +107,101 @@ app.get("/inscripcion", (req, res) => {
   });
 });
 
+//Incribir Alumnos
+app.post("/saveAlumno", (req, res) => {
+  const {
+    numero,
+    nombre,
+    paterno,
+    materno,
+    telefono,
+    carrera,
+    semestre,
+    actividad,
+  } = req.body;
+
+  conection.query(
+    "INSERT INTO alumnos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      numero,
+      nombre,
+      paterno,
+      materno,
+      carrera,
+      email,
+      telefono,
+      semestre,
+      actividad,
+    ],
+    (error, results) => {
+      if (error) {
+        conection.query("SELECT * FROM alumnos", (errorAlumno, alumnos) => {
+          if (errorAlumno) {
+            console.log(errorAlumno);
+          } else {
+            console.log("Promotores");
+            conection.query(
+              "SELECT * FROM actividades",
+              (errorPromo, promotores) => {
+                if (errorPromo) {
+                  console.log(errorPromo);
+                } else {
+                  res.render("inscripcion", {
+                    resultados: promotores,
+                    listaAlumnos: alumnos,
+                    login: true,
+                    name: req.session.name,
+                    alert: true,
+                    alertTitle: "Error",
+                    alertMessage: "El alumno ya está registrado",
+                    alertIcon: "danger",
+                    showConfirmButton: true,
+                    timer: false,
+                    ruta: "inscripcion",
+                  });
+                }
+              }
+            );
+          }
+        });
+      } else {
+        conection.query("SELECT * FROM actividades", (error, promotores) => {
+          if (error) {
+            console.log(error);
+          } else {
+            //resPromotor = results;
+            console.log("Lista Promotores");
+            conection.query("SELECT * FROM alumnos", (error, alumnos) => {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("Alumno lista");
+                res.render("inscripcion", {
+                  login: true,
+                  name: req.session.name,
+                  resultados: promotores,
+                  listaAlumnos: alumnos,
+                  alert: true,
+                  alertTitle: "Registrado",
+                  alertMessage: "El alumno ha sido registrado",
+                  alertIcon: "success",
+                  showConfirmButton: false,
+                  timer: 1500,
+                  ruta: "inscripcion",
+                });
+              }
+            });
+          }
+        });
+        // res.render("crearAlumnos", {
+        //   login: true,
+        //   name: req.session.name,
+        // });
+      }
+    }
+  );
+});
+
 //Recibir los datos ingresados en la inscripción de un alumno y guardarlos en la base de datos
 app.post("/saveAlumno", (req, res) => {
   const {
@@ -114,7 +209,6 @@ app.post("/saveAlumno", (req, res) => {
     nombre,
     paterno,
     materno,
-    email,
     telefono,
     carrera,
     semestre,
@@ -177,7 +271,7 @@ app.post("/saveAlumno", (req, res) => {
                 if (error) {
                   console.log(error);
                 } else {
-                  console.log("Alumnoa lista");
+                  console.log("Alumno lista");
                   res.render("crearAlumnos", {
                     login: true,
                     name: req.session.name,

@@ -20,7 +20,7 @@
       <form id="formulario" class="mb-4" action="inscribir" method="POST">
          <div class="form-group">
             <label>Numero de control:</label>
-            <input type="number" id="nc" name="nc" placeholder="Ingrese su número de control">
+            <input type="number" id="numero" name="numero" placeholder="Ingrese su número de control">
             <strong></strong>
          </div>
          <div class="form-group">
@@ -353,12 +353,12 @@ to {background-position: -100px 0px;background-size:2750px;}
 
       form.addEventListener("submit", (e)=>{
 
-         const ncValor = nc.value.trim()
+         const ncValor = numero.value.trim()
          const nombreValor = nombre.value.trim()
          const paternoValor = paterno.value.trim()
          const maternoValor = materno.value.trim()
-         const sexoValor = sexo.value.trim()
-         const emailValor = email.value.trim()
+         //const sexoValor = sexo.value.trim()
+         //const emailValor = email.value.trim()
          const telefonoValor = telefono.value.trim()
          const carreraValor = carrera.value.trim()
          const semestreValor = semestre.value.trim()
@@ -504,4 +504,19 @@ to {background-position: -100px 0px;background-size:2750px;}
 
 
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
+
+<% if(typeof(alert) != "undefined") {%>
+    <script>
+        Swal.fire({
+            title: "<%= alertTitle %>",
+            text: "<%= alertMessage %>",
+            icon: "<%= alertIcon %>",
+            showConfirmButton: <%= showConfirmButton %>,
+            timer: <%= timer %>
+        }).then( () => {
+            window.location="/<%= ruta %>"
+        })
+    </script>
 </html>
