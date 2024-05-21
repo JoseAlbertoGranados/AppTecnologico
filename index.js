@@ -137,7 +137,7 @@ app.post("/inscribir", (req, res) => {
                   console.log(errorPromo);
                 } else {
                   res.render("inscripcion", {
-                    resultados: promotores,
+                    listaPromotor: promotores,
                     listaAlumnos: alumnos,
                     login: true,
                     name: req.session.name,
@@ -169,7 +169,7 @@ app.post("/inscribir", (req, res) => {
                 res.render("inscripcion", {
                   login: true,
                   name: req.session.name,
-                  resultados: promotores,
+                  listaPromotor: promotores,
                   listaAlumnos: alumnos,
                   alert: true,
                   alertTitle: "Registrado",
