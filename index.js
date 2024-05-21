@@ -122,17 +122,7 @@ app.post("/inscribir", (req, res) => {
 
   conection.query(
     "INSERT INTO alumnos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    [
-      numero,
-      nombre,
-      paterno,
-      materno,
-      carrera,
-      email,
-      telefono,
-      semestre,
-      actividad,
-    ],
+    [numero, nombre, paterno, materno, carrera, telefono, semestre, actividad],
     (error, results) => {
       if (error) {
         conection.query("SELECT * FROM alumnos", (errorAlumno, alumnos) => {
