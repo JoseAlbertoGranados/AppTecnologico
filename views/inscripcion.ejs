@@ -78,7 +78,7 @@
                <select name="actividad" id="actividad">
                   <option></option>
             <% if (listaPromotor){ listaPromotor.forEach( (promotor) => {  %>
-                  <option value="<%= promotor.idPromotor %> "> <%= promotor.actividad %> - Impartida Por - <%= promotor.promotor %> </option>
+                  <option value="<%= promotor.idActividad %> "> <%= promotor.actividad %> - Impartida Por - <%= promotor.promotor %> </option>
             <% }) } %>
                </select>   
                <strong></strong>               
