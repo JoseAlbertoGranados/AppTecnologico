@@ -78,7 +78,7 @@ app.get("/ejemplo", (req, res) => {
 });
 
 app.get("/inscripcion", (req, res) => {
-  conection.query("SELECT * FROM promotores", (error, resultados) => {
+  conection.query("SELECT * FROM actividades", (error, resultados) => {
     if (error) {
       res.send("Error en la conexión");
     } else {
