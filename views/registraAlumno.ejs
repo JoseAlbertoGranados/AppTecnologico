@@ -40,57 +40,62 @@
         </ul>
       </nav>
       <div id="ventana" class="ventana">
-        <% if(results){ %>
+        
             <section class="container">
               <header>Datos de alumno a editar</header>
               <form action="#" class="form">
                 <div class="input-box">
                   <label>Número de control</label>
-                  <input id="nc" name="id" type="text" value="<%= results.numero_control %>" />
+                  <input id="nc" name="id" type="text" value="" />
                 </div>
                 
                 <div class="input-box">
                     <label>Nombre Alumno</label>
-                    <input id="nc" name="id" type="text" value="<%= results.nombre %>" />
+                    <input id="nc" name="id" type="text" />
                 </div>
                 
                 <div class="column">
                     <div class="input-box">
                       <label>Apellido Paterno</label>
-                      <input type="text" id="apellido_paterno" name="apellido_paterno"  value="<%= results.apellido_paterno %>" />
+                      <input type="text" id="apellido_paterno" name="apellido_paterno"  />
                     </div>
                     <div class="input-box">
                       <label>Apellido Materno</label>
-                      <input type="text" id="apellido_materno" name="apellido_paterno"  value="<%= results.apellido_materno %>" />
+                      <input type="text" id="apellido_materno" name="apellido_paterno"  />
                     </div>
                   </div>
         
                 <div class="column">
                   <div class="input-box">
                     <label>Telefono</label>
-                    <input type="text" id="telefono" name="telefono"  value="<%= results.telefono %>" />
+                    <input type="text" id="telefono" name="telefono"  />
                   </div>
                   <div class="input-box">
                     <label>Carrera</label>
-                    <input type="text" id="carrera" name="carrera"  value="<%= results.carrera %>" />
+                    <input type="text" id="carrera" name="carrera"  />
                   </div>
                 </div>
                 
                 <div class="column">
                     <div class="input-box">
                       <label>Semestre</label>
-                      <input type="text" id="Semestre" name="Semestre"  value="<%= results.semestre %>" />
+                      <input type="text" id="Semestre" name="Semestre" />
                     </div>
                     <div class="input-box">
-                      <label>Actividad</label>
-                      <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
+                      <label>Selecciona una actividad</label>
+                      <select name="actividad" id="actividad">
+                        <option></option>
+                  <% if (listaPromotor){ listaPromotor.forEach( (promotor) => {  %>
+                        <option value="<%= promotor.idPromotor %> "> <%= promotor.actividad %> - Impartida Por - <%= promotor.promotor %> </option>
+                  <% }) } %>
+                     </select> 
                     </div>
                 </div>
                 
                 <button>Actualizar</button>
               </form>
             </section>
-            <% } %>
+            
       
       </div>
     </div>

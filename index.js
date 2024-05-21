@@ -77,6 +77,19 @@ app.get("/ejemplo", (req, res) => {
   res.render("ejemplo");
 });
 
+//Registrar alumnos
+app.get("/registraAlumno", (req, res) => {
+  conection.query("SELECT * FROM actividades", (error, resultados) => {
+    if (error) {
+      res.send("Error en la conexión");
+    } else {
+      res.render("registraAlumno", {
+        listaPromotor: resultados,
+      });
+    }
+  });
+});
+
 app.get("/inscripcion", (req, res) => {
   conection.query("SELECT * FROM actividades", (error, resultados) => {
     if (error) {
