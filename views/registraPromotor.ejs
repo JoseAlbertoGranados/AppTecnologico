@@ -42,16 +42,11 @@
       <div id="ventana" class="ventana">
         
             <section class="container">
-              <header>Ingrese los datos del alumno</header>
+              <header>Ingrese los datos del promotor</header>
               <form action="#" class="form">
                 <div class="input-box">
-                  <label>Número de control</label>
-                  <input id="nc" name="id" type="text" value="" />
-                </div>
-                
-                <div class="input-box">
-                    <label>Nombre Alumno</label>
-                    <input id="nc" name="id" type="text" />
+                  <label>Nombre de promotor</label>
+                  <input id="nombre" name="id" type="text" value="" />
                 </div>
                 
                 <div class="column">
@@ -71,26 +66,12 @@
                     <input type="text" id="telefono" name="telefono"  />
                   </div>
                   <div class="input-box">
-                    <label>Carrera</label>
-                    <input type="text" id="carrera" name="carrera"  />
+                    <label>Escriba la actividad que imparte</label>
+                    <input type="text" id="actividad" name="actividad"  />
                   </div>
                 </div>
                 
-                <div class="column">
-                    <div class="input-box">
-                      <label>Semestre</label>
-                      <input type="text" id="Semestre" name="Semestre" />
-                    </div>
-                    <div class="input-box">
-                      <label>Selecciona una actividad</label>
-                      <select name="actividad" id="actividad">
-                        <option></option>
-                  <% if (listaPromotor){ listaPromotor.forEach( (promotor) => {  %>
-                        <option value="<%= promotor.idPromotor %> "> <%= promotor.actividad %> - Impartida Por - <%= promotor.promotor %> </option>
-                  <% }) } %>
-                     </select> 
-                    </div>
-                </div>
+                
                 
                 <button>Registrar</button>
               </form>
