@@ -508,15 +508,20 @@ to {background-position: -100px 0px;background-size:2750px;}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
 
 <% if(typeof(alert) != "undefined") {%>
-    <script>
-        Swal.fire({
-            title: "<%= alertTitle %>",
-            text: "<%= alertMessage %>",
-            icon: "<%= alertIcon %>",
-            showConfirmButton: <%= showConfirmButton %>,
-            timer: <%= timer %>
-        }).then( () => {
-            window.location="/<%= ruta %>"
-        })
-    </script>
+   <script>
+       Swal.fire({
+           title: "<%= alertTitle %>",
+           text: "<%= alertMessage %>",
+           icon: "<%= alertIcon %>",
+           showConfirmButton: <%= showConfirmButton %>,
+           timer: <%= timer %>
+       }).then( () => {
+           window.location="/<%= ruta %>"
+       })
+   </script>
+
+   <% }else{
+       console.log("Sin datos de variable")
+   } %>
+
 </html>
