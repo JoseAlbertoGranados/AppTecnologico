@@ -108,7 +108,7 @@ app.get("/inscripcion", (req, res) => {
 });
 
 //Incribir Alumnos
-app.post("/saveAlumno", (req, res) => {
+app.post("/inscribir", (req, res) => {
   const {
     numero,
     nombre,
