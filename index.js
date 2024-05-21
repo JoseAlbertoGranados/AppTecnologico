@@ -77,6 +77,11 @@ app.get("/ejemplo", (req, res) => {
   res.render("ejemplo");
 });
 
+//Registra Promotores
+app.get("/registraPromotor", (req, res) => {
+  res.render("registraPromotor");
+});
+
 //Registrar alumnos
 app.get("/registraAlumno", (req, res) => {
   conection.query("SELECT * FROM actividades", (error, resultados) => {
