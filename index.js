@@ -431,6 +431,7 @@ app.get("/prueba", (req, res) => {
     (error, results) => {
       if (error) {
         res.send("Error en la busqueda de datos");
+        console.log(error);
       } else {
         res.render("prueba", {
           results: results,
