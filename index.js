@@ -444,7 +444,7 @@ app.get("/prueba", (req, res) => {
 });
 
 //Actualizar datos Alumno
-app.update("/actualizaAlumno", (req, res) => {
+app.post("/actualizaAlumno", (req, res) => {
   const {
     nc,
     nombre,
@@ -459,7 +459,6 @@ app.update("/actualizaAlumno", (req, res) => {
     "UPDATE alumnos SET ? WHERE numero_control = ?",
     [
       {
-        numero_control: nc,
         nombre: nombre,
         apellido_paterno: apellido_paterno,
         apellido_materno: apellido_materno,
@@ -467,6 +466,7 @@ app.update("/actualizaAlumno", (req, res) => {
         carrera: carrera,
         semestre,
       },
+      nc,
     ],
     (error, results) => {
       if (error) {
