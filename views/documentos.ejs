@@ -18,6 +18,7 @@ Mandatory in IE 6, 7, 8 and 9.
         <input id="nombre" type="text" disabled value="<%= results.nombre %>">
         <input id="apellido-paterno" type="text" disabled value="<%= results.apellido_paterno %>">
         <input id="apellido-materno" type="text" disabled value="<%= results.apellido_materno %>">
+        <input id="carrera" type="text" disabled value="<%= results.carrera %>">
         <input type="file" id="doc" />
         <% } %>
         <button onclick="generate()">Generate document</button>
@@ -46,16 +47,18 @@ Mandatory in IE 6, 7, 8 and 9.
                     var numero_control = document.getElementById('nc').value
                     var nombre = document.getElementById('nombre').value
                     nombre = nombre.toUpperCase();
-                    
                     var apellido_paterno = document.getElementById('apellido-paterno').value
+                    apellido_paterno = apellido_paterno.toUpperCase();
                     var apellido_materno = document.getElementById('apellido-materno').value
+                    apellido_materno = apellido_materno.toUpperCase();
+                    var carrera = document.getElementById('carrera').value
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
                     doc.render({
                         numero_control: numero_control,
                         nombre: nombre,
                         apellido_paterno: apellido_paterno,
                         apellido_materno: apellido_materno,
-                        
+                        carrera: carrera,
                     });
 
                     const blob = doc.getZip().generate({
@@ -67,7 +70,8 @@ Mandatory in IE 6, 7, 8 and 9.
                         compression: "DEFLATE",
                     });
                     // Output the document using Data-URI
-                    saveAs(blob, "output.docx");
+                    //saveAs(blob, "output.docx");
+                    saveAs(blob, "Constancia"+nombre+".docx");
                 };
             };
         </script>
