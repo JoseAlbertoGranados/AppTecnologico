@@ -443,6 +443,41 @@ app.get("/prueba", (req, res) => {
   );
 });
 
+//Actualizar datos Alumno
+app.update("/actualizaAlumno", (req, res) => {
+  const {
+    nc,
+    nombre,
+    apellido_paterno,
+    apellido_materno,
+    telefono,
+    carrera,
+    semestre,
+  } = req.body;
+
+  conection.query(
+    "UPDATE alumnos SET ? WHERE numero_control = ?",
+    [
+      {
+        numero_control: nc,
+        nombre: nombre,
+        apellido_paterno: apellido_paterno,
+        apellido_materno: apellido_materno,
+        telefono: telefono,
+        carrera: carrera,
+        semestre,
+      },
+    ],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/prueba");
+      }
+    }
+  );
+});
+
 //Lista De Promotores Para El Jefe de Departamento
 app.get("/listaPromotor", (req, res) => {
   if (req.session.loggedin) {
