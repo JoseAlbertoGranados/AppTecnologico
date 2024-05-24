@@ -464,7 +464,7 @@ app.post("/actualizaAlumno", (req, res) => {
         apellido_materno: apellido_materno,
         telefono: telefono,
         carrera: carrera,
-        semestre,
+        semestre: semestre,
       },
       nc,
     ],
