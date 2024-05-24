@@ -34,6 +34,7 @@ app.use(
 //Invocar conecxión a la base de datos
 import conection from "./database/db.js";
 import { name, render } from "ejs";
+import { error } from "console";
 
 //Rutas
 app.get("/loginJefe", (req, res) => {
@@ -443,8 +444,25 @@ app.get("/prueba", (req, res) => {
   );
 });
 
+//Eliminar registros de alumnos
+app.delete("/eliminarAlumno", (req, res) => {
+  const nc = req.params.numero_control;
+  conection.query(
+    "DELETE FROM alumnos WHERE numero_control = ?",
+    { nc },
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/prueba");
+      }
+    }
+  );
+});
+
 //Actualizar datos Alumno
 app.post("/update", (req, res) => {
+  //Se reciben los datos del formulario POST
   const {
     nc,
     nombre,
@@ -455,6 +473,9 @@ app.post("/update", (req, res) => {
     semestre,
   } = req.body;
 
+  //Conexión a la BASE DE DATOS y realizar UPDATE
+  //Los datos a actualizar se enlistan como un objeto PROPIEDAD DE TABLA : CONST valor Recibido
+  //Afuera del arreglo se anexa el dato de referencia para el where en este caso nc
   conection.query(
     "UPDATE alumnos SET ? WHERE numero_control = ?",
     [
@@ -470,10 +491,13 @@ app.post("/update", (req, res) => {
     ],
     (error, results) => {
       if (error) {
+        //Si ocurre un error en la ejecución, visualizalo
         console.log(error);
       } else if (results.affectedRows === 0) {
+        //Si los registros afectados en la actualización en la ejecución en 0
         console.log("No se actualizaron registros");
       } else {
+        //Redirecciona una vez ejecutado la actualización
         res.redirect("/prueba");
       }
     }
