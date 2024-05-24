@@ -43,47 +43,47 @@
         
             <section class="container">
               <header>Ingrese los datos del alumno</header>
-              <form action="#" class="form">
+              <form action="guardaAlumno" class="form">
                 <div class="input-box">
                   <label>Número de control</label>
-                  <input id="numero" name="numero" type="text" value="" />
+                  <input id="numero" name="numero" type="text" value="" required/>
                 </div>
                 
                 <div class="input-box">
                     <label>Nombre Alumno</label>
-                    <input id="nc" name="id" type="text" />
+                    <input id="nc" name="id" type="text" required/>
                 </div>
                 
                 <div class="column">
                     <div class="input-box">
                       <label>Apellido Paterno</label>
-                      <input type="text" id="paterno" name="paterno"  />
+                      <input type="text" id="paterno" name="paterno" required />
                     </div>
                     <div class="input-box">
                       <label>Apellido Materno</label>
-                      <input type="text" id="materno" name="materno"  />
+                      <input type="text" id="materno" name="materno" required />
                     </div>
                   </div>
         
                 <div class="column">
                   <div class="input-box">
                     <label>Telefono</label>
-                    <input type="text" id="telefono" name="telefono"  />
+                    <input type="text" id="telefono" name="telefono"  required />
                   </div>
                   <div class="input-box">
                     <label>Carrera</label>
-                    <input type="text" id="carrera" name="carrera"  />
+                    <input type="text" id="carrera" name="carrera" required />
                   </div>
                 </div>
                 
                 <div class="column">
                     <div class="input-box">
                       <label>Semestre</label>
-                      <input type="text" id="Semestre" name="Semestre" />
+                      <input type="text" id="semestre" name="semestre" required/>
                     </div>
                     <div class="input-box">
                       <label>Selecciona una actividad</label>
-                      <select name="actividad" id="actividad">
+                      <select name="actividad" id="actividad" required>
                         <option></option>
                   <% if (listaPromotor){ listaPromotor.forEach( (promotor) => {  %>
                         <option value="<%= promotor.idPromotor %> "> <%= promotor.actividad %> - Impartida Por - <%= promotor.promotor %> </option>

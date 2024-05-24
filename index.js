@@ -460,6 +460,93 @@ app.get("/eliminarAlumno/:nc", (req, res) => {
   );
 });
 
+//Regitrar a los alumnos del menu
+//Incribir Alumnos
+app.post("/guardaAlumno", (req, res) => {
+  const {
+    numero,
+    nombre,
+    paterno,
+    materno,
+    telefono,
+    carrera,
+    semestre,
+    actividad,
+  } = req.body;
+
+  conection.query(
+    "INSERT INTO alumnos VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    [numero, nombre, paterno, materno, carrera, telefono, semestre, actividad],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        conection.query("SELECT * FROM alumnos", (errorAlumno, alumnos) => {
+          if (errorAlumno) {
+            console.log(errorAlumno);
+          } else {
+            console.log("Promotores");
+            conection.query(
+              "SELECT * FROM actividades",
+              (errorPromo, promotores) => {
+                if (errorPromo) {
+                  console.log(errorPromo);
+                } else {
+                  res.render("prueba", {
+                    listaPromotor: promotores,
+                    listaAlumnos: alumnos,
+                    login: true,
+                    name: req.session.name,
+                    alert: true,
+                    alertTitle: "Error",
+                    alertMessage: "El alumno ya está registrado",
+                    alertIcon: "danger",
+                    showConfirmButton: true,
+                    timer: false,
+                    ruta: "prueba",
+                  });
+                }
+              }
+            );
+          }
+        });
+      } else {
+        conection.query("SELECT * FROM actividades", (error, promotores) => {
+          if (error) {
+            console.log(error);
+          } else {
+            //resPromotor = results;
+            console.log("Lista Promotores");
+            conection.query("SELECT * FROM alumnos", (error, alumnos) => {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("Alumno lista");
+                res.render("prueba", {
+                  login: true,
+                  name: req.session.name,
+                  listaPromotor: promotores,
+                  listaAlumnos: alumnos,
+                  alert: true,
+                  alertTitle: "Registrado",
+                  alertMessage: "El alumno ha sido registrado",
+                  alertIcon: "success",
+                  showConfirmButton: false,
+                  timer: 1500,
+                  ruta: "prueba",
+                });
+              }
+            });
+          }
+        });
+        // res.render("crearAlumnos", {
+        //   login: true,
+        //   name: req.session.name,
+        // });
+      }
+    }
+  );
+});
+
 //Actualizar datos Alumno
 app.post("/update", (req, res) => {
   //Se reciben los datos del formulario POST
