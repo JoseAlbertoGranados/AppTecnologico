@@ -472,7 +472,7 @@ app.post("/actualizaAlumno", (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        res.redirect("/prueba");
+        res.render("/prueba");
       }
     }
   );
