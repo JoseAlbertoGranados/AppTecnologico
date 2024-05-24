@@ -444,7 +444,7 @@ app.get("/prueba", (req, res) => {
 });
 
 //Actualizar datos Alumno
-app.post("/actualizaAlumno", (req, res) => {
+app.put("/actualizaAlumno", (req, res) => {
   const {
     nc,
     nombre,
@@ -471,6 +471,8 @@ app.post("/actualizaAlumno", (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+      } else if (results.affectedRows === 0) {
+        console.log("No se actualizaron registros");
       } else {
         res.render("/prueba");
       }
