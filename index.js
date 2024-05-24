@@ -445,8 +445,8 @@ app.get("/prueba", (req, res) => {
 });
 
 //Eliminar registros de alumnos
-app.delete("/eliminarAlumno", (req, res) => {
-  const nc = req.params.numero_control;
+app.get("/eliminarAlumno/:nc", (req, res) => {
+  const nc = req.params.nc;
   conection.query(
     "DELETE FROM alumnos WHERE numero_control = ?",
     { nc },
