@@ -474,7 +474,7 @@ app.post("/update", (req, res) => {
       } else if (results.affectedRows === 0) {
         console.log("No se actualizaron registros");
       } else {
-        res.render("/prueba");
+        res.redirect("/prueba");
       }
     }
   );
