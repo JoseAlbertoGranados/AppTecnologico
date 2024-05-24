@@ -444,7 +444,7 @@ app.get("/prueba", (req, res) => {
 });
 
 //Actualizar datos Alumno
-app.put("/actualizaAlumno", (req, res) => {
+app.post("/update", (req, res) => {
   const {
     nc,
     nombre,
