@@ -449,7 +449,7 @@ app.get("/eliminarAlumno/:nc", (req, res) => {
   const nc = req.params.nc;
   conection.query(
     "DELETE FROM alumnos WHERE numero_control = ?",
-    { nc },
+    [nc],
     (error, results) => {
       if (error) {
         console.log(error);
