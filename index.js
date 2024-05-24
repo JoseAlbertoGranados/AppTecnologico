@@ -491,7 +491,7 @@ app.post("/guardaAlumno", (req, res) => {
                 if (errorPromo) {
                   console.log(errorPromo);
                 } else {
-                  res.render("prueba", {
+                  res.render("registraAlumno", {
                     listaPromotor: promotores,
                     listaAlumnos: alumnos,
                     login: true,
@@ -502,7 +502,7 @@ app.post("/guardaAlumno", (req, res) => {
                     alertIcon: "danger",
                     showConfirmButton: true,
                     timer: false,
-                    ruta: "prueba",
+                    ruta: "registraAlumno",
                   });
                 }
               }
@@ -521,7 +521,7 @@ app.post("/guardaAlumno", (req, res) => {
                 console.log(error);
               } else {
                 console.log("Alumno lista");
-                res.render("prueba", {
+                res.render("registraAlumno", {
                   login: true,
                   name: req.session.name,
                   listaPromotor: promotores,
@@ -532,7 +532,7 @@ app.post("/guardaAlumno", (req, res) => {
                   alertIcon: "success",
                   showConfirmButton: false,
                   timer: 1500,
-                  ruta: "prueba",
+                  ruta: "registraAlumno",
                 });
               }
             });
