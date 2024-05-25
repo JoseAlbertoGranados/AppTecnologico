@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Editar</title>
-    <link rel="SHORTCUT ICON" href="itcg.jpg" type="image/x-icon">
+    <link rel="icon" type="image/png" href="resources/logo.png">
     <script src="https://kit.fontawesome.com/9584a3d4cd.js" crossorigin="anonymous"></script>
 
 	<!-- links para exportar a excel -->
@@ -42,34 +42,35 @@
       <div id="ventana" class="ventana">
         
             <section class="container">
-              <header>Ingrese los datos del promotor</header>
-              <form action="#" class="form">
+              <header>Ingrese los datos del alumno</header>
+              <form action="guardaPromotor" method="POST"  class="form">
                 <div class="input-box">
                   <label>Nombre de promotor</label>
-                  <input id="nombre" name="id" type="text" value="" />
+                  <input id="nombre" name="nombre" type="text" value="" required/>
                 </div>
+                
                 
                 <div class="column">
                     <div class="input-box">
                       <label>Apellido Paterno</label>
-                      <input type="text" id="apellido_paterno" name="apellido_paterno"  />
+                      <input type="text" id="paterno" name="paterno" required />
                     </div>
                     <div class="input-box">
                       <label>Apellido Materno</label>
-                      <input type="text" id="apellido_materno" name="apellido_paterno"  />
+                      <input type="text" id="materno" name="materno" required />
                     </div>
-                  </div>
-        
-                <div class="column">
-                  <div class="input-box">
-                    <label>Telefono</label>
-                    <input type="text" id="telefono" name="telefono"  />
-                  </div>
-                  <div class="input-box">
-                    <label>Escriba la actividad que imparte</label>
-                    <input type="text" id="actividad" name="actividad"  />
-                  </div>
                 </div>
+        
+                
+                  <div class="input-box">
+                    <label>Defina un número de actividad(con el fin de identificar y evitar duplicados):</label>
+                    <input type="text" id="idActividad" name="idActividad"  required />
+                  </div>
+                  <div class="input-box">
+                    <label>Actividad</label>
+                    <input type="text" id="actividad" name="actividad" required />
+                  </div>
+                
                 
                 
                 
@@ -840,7 +841,24 @@ function searchTable() {
     });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
 
+<% if(typeof(alert) != "undefined") {%>
+	<script>
+		Swal.fire({
+			title: "<%= alertTitle %>",
+			text: "<%= alertMessage %>",
+			icon: "<%= alertIcon %>",
+			showConfirmButton: <%= showConfirmButton %>,
+			timer: <%= timer %>
+		}).then( () => {
+			window.location="/<%= ruta %>"
+		})
+	</script>
+ 
+	<% }else{
+		console.log("Sin datos de variable")
+	} %>
 
   </body>
 </html>

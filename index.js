@@ -83,6 +83,55 @@ app.get("/registraPromotor", (req, res) => {
   res.render("registraPromotor");
 });
 
+app.post("/guardaPromotor", (req, res) => {
+  const { nombre, paterno, materno, idActividad } = req.body;
+
+  conection.query(
+    "INSERT INTO actividades VALUES (?, ?, ?, ?, ?)",
+    [nombre, paterno, materno, idActividad],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        console.log("Actividades");
+        res.render("registraPromotor", {
+          listaPromotor: promotores,
+          listaAlumnos: alumnos,
+          login: true,
+          name: req.session.name,
+          alert: true,
+          alertTitle: "Error",
+          alertMessage: "La actividad y promotor ya están registrados",
+          alertIcon: "danger",
+          showConfirmButton: true,
+          timer: false,
+          ruta: "registraPromotor",
+        });
+      } else {
+        //resPromotor = results;
+        console.log("Lista Promotores");
+        console.log("Alumno lista");
+        res.render("registraPromotor", {
+          login: true,
+          name: req.session.name,
+          listaPromotor: promotores,
+          listaAlumnos: alumnos,
+          alert: true,
+          alertTitle: "Registrado",
+          alertMessage: "La actividad ha sido registrada",
+          alertIcon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          ruta: "registraPromotor",
+        });
+      }
+    }
+  );
+  // res.render("crearAlumnos", {
+  //   login: true,
+  //   name: req.session.name,
+  // });
+});
+
 //Registrar alumnos
 app.get("/registraAlumno", (req, res) => {
   conection.query("SELECT * FROM actividades", (error, resultados) => {
