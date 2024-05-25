@@ -84,11 +84,11 @@ app.get("/registraPromotor", (req, res) => {
 });
 
 app.post("/guardaPromotor", (req, res) => {
-  const { nombre, paterno, materno, idActividad } = req.body;
+  const { nombre, paterno, materno, idActividad, actividad } = req.body;
 
   conection.query(
     "INSERT INTO actividades VALUES (?, ?, ?, ?, ?)",
-    [nombre, paterno, materno, idActividad],
+    [idActividad, nombre, paterno, materno, actividad],
     (error, results) => {
       if (error) {
         console.log(error);
