@@ -94,8 +94,6 @@ app.post("/guardaPromotor", (req, res) => {
         console.log(error);
         console.log("Actividades");
         res.render("registraPromotor", {
-          listaPromotor: promotores,
-          listaAlumnos: alumnos,
           login: true,
           name: req.session.name,
           alert: true,
@@ -113,8 +111,6 @@ app.post("/guardaPromotor", (req, res) => {
         res.render("registraPromotor", {
           login: true,
           name: req.session.name,
-          listaPromotor: promotores,
-          listaAlumnos: alumnos,
           alert: true,
           alertTitle: "Registrado",
           alertMessage: "La actividad ha sido registrada",
