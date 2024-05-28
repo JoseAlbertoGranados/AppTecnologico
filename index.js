@@ -638,7 +638,7 @@ app.post("/update", (req, res) => {
 
 //Lista De Promotores Para El Jefe de Departamento
 app.get("/listaPromotores", (req, res) => {
-  conection.query("SELECT * FROM promotores", (error, results) => {
+  conection.query("SELECT * FROM actividades", (error, results) => {
     if (error) {
       res.send("Error en la busqueda de datos");
     } else {
