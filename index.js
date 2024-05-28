@@ -637,7 +637,7 @@ app.post("/update", (req, res) => {
 });
 
 //Lista De Promotores Para El Jefe de Departamento
-app.get("/listaPromotor", (req, res) => {
+app.get("/listaPromotores", (req, res) => {
   if (req.session.loggedin) {
     conection.query("SELECT * FROM promotores", (error, results) => {
       if (error) {
