@@ -638,24 +638,17 @@ app.post("/update", (req, res) => {
 
 //Lista De Promotores Para El Jefe de Departamento
 app.get("/listaPromotores", (req, res) => {
-  if (req.session.loggedin) {
-    conection.query("SELECT * FROM promotores", (error, results) => {
-      if (error) {
-        res.send("Error en la busqueda de datos");
-      } else {
-        res.render("listaPromotor", {
-          results: results,
-          login: true,
-          name: req.session.name,
-        });
-      }
-    });
-  } else {
-    res.render("loginJefe", {
-      login: false,
-      name: "Debes Iniciar Sesión",
-    });
-  }
+  conection.query("SELECT * FROM promotores", (error, results) => {
+    if (error) {
+      res.send("Error en la busqueda de datos");
+    } else {
+      res.render("listaPromotor", {
+        results: results,
+        login: true,
+        name: req.session.name,
+      });
+    }
+  });
 });
 
 //Ruta para editar registros de alumnos
