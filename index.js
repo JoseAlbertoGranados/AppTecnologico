@@ -473,7 +473,7 @@ app.get("/listaAlumnos", (req, res) => {
 app.get("/prueba", (req, res) => {
   conection.query(
     //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
-    "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
+    "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
     (error, results) => {
       if (error) {
         res.send("Error en la busqueda de datos");
