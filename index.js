@@ -642,7 +642,7 @@ app.get("/listaPromotores", (req, res) => {
     if (error) {
       res.send("Error en la busqueda de datos");
     } else {
-      res.render("listaPromotor", {
+      res.render("listaPromotores", {
         results: results,
         login: true,
         name: req.session.name,
