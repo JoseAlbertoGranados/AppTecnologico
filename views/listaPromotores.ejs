@@ -88,7 +88,7 @@
 								<a onclick="confirmar(<%= promotor.idActividad %>)" value="Eliminar" class="button-eliminar"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                             <td>
-								<a value="Editar" class="button-editar" href="/editarAlumnos/<%= promotor.idActividad %>">Editar</a>
+								<a value="Editar" class="button-editar" href="/editarPromotor/<%= promotor.idActividad %>">Editar</a>
                             </td>
 
                             
@@ -697,7 +697,7 @@ function confirmacion(){
 }
 
 /*Función con SweetAlert*/
-function confirmar(nc){
+function confirmar(id){
 	Swal.fire({
   title: "¿Está seguro de eliminar el registro?",
   text: "Una vez hecho, no se recuperan los datos",
@@ -708,7 +708,7 @@ function confirmar(nc){
   confirmButtonText: "Si, Eliminar"
 }).then((result) => {
   if (result.isConfirmed) {
-    window.location = "/eliminarAlumno/"+nc
+    window.location = "/eliminarPromotor/"+id
   }
 });
 }

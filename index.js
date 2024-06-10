@@ -83,6 +83,22 @@ app.get("/registraPromotor", (req, res) => {
   res.render("registraPromotor");
 });
 
+//Eliminar registros de Promotores
+app.get("/eliminarPromotor/:id", (req, res) => {
+  const id = req.params.id;
+  conection.query(
+    "DELETE FROM actividades WHERE idActividad = ?",
+    [id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/listaPromotores");
+      }
+    }
+  );
+});
+
 app.post("/guardaPromotor", (req, res) => {
   const { nombre, paterno, materno, idActividad, actividad } = req.body;
 
