@@ -83,6 +83,65 @@ app.get("/registraPromotor", (req, res) => {
   res.render("registraPromotor");
 });
 
+//Ruta para editar registros de promotores
+app.get("/editarPromotor/:idActividad", (req, res) => {
+  const idActividad = req.params.idActividad;
+
+  conection.query(
+    "SELECT * FROM actividades WHERE idActividad = ?",
+    [idActividad],
+    (error, results) => {
+      if (error) {
+        res.send("Error en la busqueda de datos");
+      } else {
+        res.render("editarPromotor", {
+          results: results[0],
+        });
+      }
+    }
+  );
+});
+
+//Actualizar datos Promotor
+app.post("/actualizaPromotor", (req, res) => {
+  //Se reciben los datos del formulario POST
+  const {
+    idActividad,
+    promotor,
+    apellido_paterno,
+    apellido_materno,
+    actividad,
+  } = req.body;
+
+  //Conexión a la BASE DE DATOS y realizar UPDATE
+  //Los datos a actualizar se enlistan como un objeto PROPIEDAD DE TABLA : CONST valor Recibido
+  //Afuera del arreglo se anexa el dato de referencia para el where en este caso nc
+  conection.query(
+    "UPDATE actividades SET ? WHERE idActividad = ?",
+    [
+      {
+        promotor: promotor,
+        apellido_paterno: apellido_paterno,
+        apellido_materno: apellido_materno,
+        actividad,
+      },
+      idActividad,
+    ],
+    (error, results) => {
+      if (error) {
+        //Si ocurre un error en la ejecución, visualizalo
+        console.log(error);
+      } else if (results.affectedRows === 0) {
+        //Si los registros afectados en la actualización en la ejecución en 0
+        console.log("No se actualizaron registros");
+      } else {
+        //Redirecciona una vez ejecutado la actualización
+        res.redirect("/listaPromotores");
+      }
+    }
+  );
+});
+
 //Eliminar registros de Promotores
 app.get("/eliminarPromotor/:id", (req, res) => {
   const id = req.params.id;

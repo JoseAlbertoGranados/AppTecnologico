@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Editar</title>
-    <link rel="icon" type="image/png" href="resources/logo.png">
+    <link rel="SHORTCUT ICON" href="itcg.jpg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/9584a3d4cd.js" crossorigin="anonymous"></script>
 
 	<!-- links para exportar a excel -->
@@ -25,7 +25,7 @@
           <h3>Mi nombre</h3>
         </div>
         <ul>
-			<li> <a href="/prueba"> <i class="fa-solid fa-desktop"></i> <span>Inicio</span>
+            <li> <a href="/prueba"> <i class="fa-solid fa-desktop"></i> <span>Inicio</span>
             </a> </li>
 			<li> <a href="/prueba"> <i class="fa-regular fa-clipboard"></i> <span>Alumnos</span>
             </a> </li>
@@ -40,44 +40,45 @@
         </ul>
       </nav>
       <div id="ventana" class="ventana">
-        
+        <% if(results){ %>
             <section class="container">
-              <header>Ingrese los datos del alumno</header>
-              <form action="guardaPromotor" method="POST"  class="form">
+              <header>Datos de alumno a editar</header>
+              <form action="/actualizaPromotor" method="POST" class="form">
                 <div class="input-box">
-                  <label>Nombre de promotor</label>
-                  <input id="nombre" name="nombre" type="text" value="" required/>
+                  <label>Número de control</label>
+                  <input id="idActividad" name="idActividad" type="text" value="<%= results.idActividad %>" />
                 </div>
                 
+                <div class="input-box">
+                    <label>Nombre Promotor</label>
+                    <input id="promotor" name="promotor" type="text" value="<%= results.promotor %>" />
+                </div>
                 
                 <div class="column">
                     <div class="input-box">
                       <label>Apellido Paterno</label>
-                      <input type="text" id="paterno" name="paterno" required />
+                      <input type="text" id="apellido_paterno" name="apellido_paterno"  value="<%= results.apellido_paterno %>" />
                     </div>
                     <div class="input-box">
                       <label>Apellido Materno</label>
-                      <input type="text" id="materno" name="materno" required />
+                      <input type="text" id="apellido_materno" name="apellido_materno"  value="<%= results.apellido_materno %>" />
                     </div>
-                </div>
+                  </div>
         
                 
-                  <div class="input-box">
-                    <label>Defina un número de actividad(con el fin de identificar y evitar duplicados):</label>
-                    <input type="text" id="idActividad" name="idActividad"  required />
-                  </div>
-                  <div class="input-box">
-                    <label>Actividad</label>
-                    <input type="text" id="actividad" name="actividad" required />
-                  </div>
                 
                 
+                    
+                    <div class="input-box">
+                      <label>Actividad</label>
+                      <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
+                    </div>
                 
                 
-                <button>Registrar</button>
+                <button>Actualizar</button>
               </form>
             </section>
-            
+            <% } %>
       
       </div>
     </div>
@@ -841,24 +842,7 @@ function searchTable() {
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
 
-<% if(typeof(alert) != "undefined") {%>
-	<script>
-		Swal.fire({
-			title: "<%= alertTitle %>",
-			text: "<%= alertMessage %>",
-			icon: "<%= alertIcon %>",
-			showConfirmButton: <%= showConfirmButton %>,
-			timer: <%= timer %>
-		}).then( () => {
-			window.location="/<%= ruta %>"
-		})
-	</script>
- 
-	<% }else{
-		console.log("Sin datos de variable")
-	} %>
 
   </body>
 </html>
