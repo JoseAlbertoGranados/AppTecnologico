@@ -51,7 +51,7 @@ app.get("/loginJefe", (req, res) => {
 */
 
 //Edicion de documentos
-app.get("/documentos/:numero_control", (req, res) => {
+app.get("/crearConstancia/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
 
   conection.query(

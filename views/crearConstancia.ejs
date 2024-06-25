@@ -4,12 +4,9 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard Responsive</title>
-	<link rel="icon" type="image/png" href="resources/logo.png">
+    <title>Editar</title>
+    <link rel="icon" type="image/png" href="resources/logo.png">
     <script src="https://kit.fontawesome.com/9584a3d4cd.js" crossorigin="anonymous"></script>
-
-	<!-- SWEET ALERT-->
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
 
 	<!-- links para exportar a excel -->
     <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
@@ -17,105 +14,141 @@
     <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
 
   </head>
-  <body> <input id="checkbox" type="checkbox">
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.45.0/docxtemplater.js"></script>
+    <script src="https://unpkg.com/pizzip@3.1.6/dist/pizzip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+    <script src="https://unpkg.com/pizzip@3.1.6/dist/pizzip-utils.js"></script>
+
+    <input id="checkbox" type="checkbox">
     <header class="cabecera">
       <h2>ITCG - <b> Departamento Actividades Extraescolares </b> <label for="checkbox">
           <i id="btn" class="fa-solid fa-bars"></i> </label> </h2>
       <label> <i id="navbtn" class="fa-solid fa-bars"></i> </label> </header>
     <div id="body" class="body">
       <nav id="menu" d="" class="menu active">
-        <!-- <div class="user-p"> <img src="itcg.jpg">
+        <div class="user-p"> <img src="itcg.jpg">
           <h3>Mi nombre</h3>
-        </div> -->
+        </div>
         <ul>
-          <li> <a href="/prueba"> <i class="fa-solid fa-desktop"></i> <span>Inicio</span>
+			<li> <a href="/prueba"> <i class="fa-solid fa-desktop"></i> <span>Inicio</span>
             </a> </li>
-			<li> <a href="/registraAlumno"> <i class="fa-regular fa-clipboard"></i> <span>Alumnos</span>
+			<li> <a href="/prueba"> <i class="fa-regular fa-clipboard"></i> <span>Alumnos</span>
             </a> </li>
 			<li> <a href="/listaPromotores"> <i class="fa-solid fa-volleyball"></i> <span>Actividades</span>
             </a> </li>
 			<li> <a href=""> <i class="fa-regular fa-clipboard"></i> <span>Avisos</span>
             </a> </li>
-			
-          <li> <a href="/loginJefe"> <i class="fa-solid fa-power-off"></i> <span>Sesión</span>
+			<li> <a href=""> <i class="fa-solid fa-gear"></i> <span>Configuración</span>
+            </a> </li>
+          <li> <a href=""> <i class="fa-solid fa-power-off"></i> <span>Sesión</span>
             </a> </li>
         </ul>
       </nav>
       <div id="ventana" class="ventana">
-        <main class="table">
-          <section class="table__header">
-            <h4 class="titulo-tabla">Actividades</h4>
-            <div class="input-group"> <input placeholder="Buscar Alumno" type="search">
-              <i class="fa-solid fa-magnifying-glass"></i> </div>
-            <div class="export__file"> <label for="export-file" class="export__file-btn"
-
-                title="Export File"></label> <input id="export-file"
-
-                type="checkbox">
-              <div class="export__file-options"> <label>Descargar Excel</label>
-                </label> <label for="export-file" id="btnExportar">EXCEL<img
-
-                    src="resources/excel.png" alt="">
-				</label> <label for="export-file"
-
-                  id="toCSV">Volver</label> </div>
-            </div>
-          </section>
-          <section class="table__body">
-            <table id="tabla">
-              <thead>
-                <tr>
-					<th> Número Control </th>
-					<th> Nombre </th>
-                  <th> Apellido Paterno </th>
-                  <th> Apellido Materno </th>
-                  <th> Carrera </th>
-				  
-                  <th> Telefono </th>
-                  <th> Semestre </th>
-				  <th> N° Actividad </th>
-                  <th> Actividad </th>
-                </tr>
-              </thead>
-
-              <tbody>       
-                <% results.forEach( (alumno) => { %>
-                    <tr>
-                        <td><%= alumno.numero_control %> </td>
-                            <td><%= alumno.nombre %> </td>
-                            <td><%= alumno.apellido_paterno %></td>
-                            <td><%= alumno.apellido_materno %></td>
-                            <td><%= alumno.carrera %></td>
-                            
-                            <td><%= alumno.telefono %></td>
-                            <td><%= alumno.semestre %></td>
-                            <td><%= alumno.idActividad %></td>
-                            <td><%= alumno.actividad %></td>
-
-                            <td>
-
-								<a onclick="confirmar(<%= alumno.numero_control %>)" value="Eliminar" class="button-eliminar"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                            <td>
-								<a value="Editar" class="button-editar" href="/editarAlumnos/<%= alumno.numero_control %>">Editar</a>
-                            </td>
-
-                            <td>
-								<a value="Constancia" class="button-editar" href="/crearConstancia/<%= alumno.numero_control %>">Constancia</a>
-                            </td>
-                        
-                    </tr>
-                <% } ) %>
+        
+            <section class="container">
+              <header>Datos del alumno</header>
+              <% if(results){ %>
+                <div class="input-box">
+                  <label>Número de control</label>
+                  <input id="nc" type="text" disabled value="<%= results.numero_control %>">
+                </div>
                 
-
-
-        </tbody>
-
-            </table>
-          </section>
-        </main>
+                <div class="input-box">
+                    <label>Nombre Alumno</label>
+                    <input id="nombre" type="text" disabled value="<%= results.nombre %>">
+                </div>
+                
+                <div class="column">
+                    <div class="input-box">
+                      <label>Apellido Paterno</label>
+                      <input id="apellido-paterno" type="text" disabled value="<%= results.apellido_paterno %>">
+                    </div>
+                    <div class="input-box">
+                      <label>Apellido Materno</label>
+                      <input id="apellido-materno" type="text" disabled value="<%= results.apellido_materno %>">
+                    </div>
+                  </div>
+        
+                <div class="column">
+                  <div class="input-box">
+                    <label>Carrera</label>
+                    <input id="carrera" type="text" disabled value="<%= results.carrera %>">
+                  </div>
+                  <div class="input-box">
+                    <label>Actividad</label>
+                    <input type="text" id="carrera" name="carrera" required />
+                  </div>
+                </div>
+                
+                <div class="column">
+                    <div class="input-box">
+                      <label>Promotor</label>
+                      <input type="text" id="semestre" name="semestre" required/>
+                    </div>
+                </div>
+                <% } %>
+                <button onclick="generate()">Generar Documento</button>
+              
+            </section>
+            
+      
       </div>
     </div>
+    <script>
+        const docs = document.getElementById("doc");
+        window.generate = function generate() {
+            const reader = new FileReader();
+            if (docs.files.length === 0) {
+                alert("No files selected");
+            }
+            reader.readAsBinaryString(docs.files.item(0));
+
+            reader.onerror = function (evt) {
+                console.log("error reading file", evt);
+                alert("error reading file" + evt);
+            };
+            reader.onload = function (evt) {
+                const content = evt.target.result;
+                const zip = new PizZip(content);
+                const doc = new window.docxtemplater(zip, {
+                    paragraphLoop: true,
+                    linebreaks: true,
+                });
+                
+                //Get datas
+                var numero_control = document.getElementById('nc').value
+                var nombre = document.getElementById('nombre').value
+                nombre = nombre.toUpperCase();
+                var apellido_paterno = document.getElementById('apellido-paterno').value
+                apellido_paterno = apellido_paterno.toUpperCase();
+                var apellido_materno = document.getElementById('apellido-materno').value
+                apellido_materno = apellido_materno.toUpperCase();
+                var carrera = document.getElementById('carrera').value
+                // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
+                doc.render({
+                    numero_control: numero_control,
+                    nombre: nombre,
+                    apellido_paterno: apellido_paterno,
+                    apellido_materno: apellido_materno,
+                    carrera: carrera,
+                });
+
+                const blob = doc.getZip().generate({
+                    type: "blob",
+                    mimeType:
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    // compression: DEFLATE adds a compression step.
+                    // For a 50MB output document, expect 500ms additional CPU time
+                    compression: "DEFLATE",
+                });
+                // Output the document using Data-URI
+                //saveAs(blob, "output.docx");
+                saveAs(blob, "Constancia"+nombre+".docx");
+            };
+        };
+    </script>
     <style type="text/css">
 	
 
@@ -202,7 +235,7 @@
 
 	.table__body{
 		width: 95%;
-		max-height: calc(89% - 1.6rem);
+		max-height: 100%;
 		background-color: #fffb;
 		margin: .8rem auto;
 		border-radius: .6rem;
@@ -360,7 +393,7 @@
 		display: inline-block;
 		width: 2rem;
 		height: 2rem;
-		background: #fff6 url('resources/export.png') center/80% no-repeat;
+		background: #fff6 url('images/export.png') center/80% no-repeat;
 		border-radius: 50%;
 		transition: .2s ease-in-out;
 	}
@@ -466,8 +499,7 @@
 		width: 100%;
 		min-height: 100vh;
 		display: flex;
-		
-		
+			
 
 	}
 
@@ -561,10 +593,7 @@
 
 
 	@media (min-width: 1024px) {
-
-		.ventana{
-			margin-top: -50px;
-		}
+        
 
 		#navbtn{
 			display: none;
@@ -622,7 +651,6 @@
 
 /* CSS */
 .button-editar {
-  text-decoration: none;
   background-color: #13aa52;
   border: 1px solid #13aa52;
   border-radius: 4px;
@@ -631,11 +659,11 @@
   color: #fff;
   cursor: pointer;
   font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   outline: none;
   outline: 0;
-  padding: 5px 15px;
+  padding: 10px 25px;
   text-align: center;
   transform: translateY(0);
   transition: transform 150ms, box-shadow 150ms;
@@ -651,7 +679,7 @@
 
 @media (min-width: 768px) {
   .button-editar {
-    padding: 5px 15px;
+    padding: 10px 30px;
   }
 }
 
@@ -669,12 +697,12 @@
   cursor: pointer;
   display: inline-block;
   font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 16px;
   min-height: 40px;
   outline: 0;
-  padding: 5px 7px;
+  padding: 12px 14px;
   text-align: center;
   text-rendering: geometricprecision;
   text-transform: none;
@@ -695,9 +723,123 @@
   opacity: .5;
 }
 
+
+/*Estilos formulario*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+
+
+
 </style>
 <script type="text/javascript">
-/*Función para eliminar registros*/
+
 function confirmacion(){
 		var respuesta = confirm("¿Desea eliminar el registro?");
 		if(respuesta === true){
@@ -705,23 +847,6 @@ function confirmacion(){
 		}else{
 			return false;
 		}
-}
-
-/*Función con SweetAlert*/
-function confirmar(nc){
-	Swal.fire({
-  title: "¿Está seguro de eliminar el registro?",
-  text: "Una vez hecho, no se recuperan los datos",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Si, Eliminar"
-}).then((result) => {
-  if (result.isConfirmed) {
-    window.location = "/eliminarAlumno/"+nc
-  }
-});
 }
 
 
@@ -784,6 +909,8 @@ function searchTable() {
     });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
+
 <% if(typeof(alert) != "undefined") {%>
 	<script>
 		Swal.fire({
@@ -803,3 +930,8 @@ function searchTable() {
 
   </body>
 </html>
+
+
+
+
+
