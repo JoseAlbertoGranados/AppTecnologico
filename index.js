@@ -515,7 +515,7 @@ app.get("/menuInicio", (req, res) => {
           return res.render("menuInicio", {
             results: results,
             login: true,
-            name: req.session.name,
+            //name: req.session.name,
           });
         }
       }
@@ -619,7 +619,8 @@ app.post("/iniciaPrueba", (req, res) => {
           });
         } else {
           req.session.loggedin = true;
-          req.session.name = results[0].usuario;
+          //req.session.name = results[0].usuario;
+          console.log("Iniciando la sesión enviar menuInicio");
           console.log(results[0].usuario);
           return res.render("loginJefe", {
             alert: true,
