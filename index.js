@@ -512,9 +512,7 @@ app.get("/menuInicio", (req, res) => {
         if (error) {
           console.log(error);
         } else {
-          return res.render("menuInicio", {
-            results: results,
-          });
+          return res.render("menuInicio");
         }
       }
     );
