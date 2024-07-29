@@ -1,230 +1,809 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie-edge">
-	<title>Sistema ITCG - Actividades Extraescolares</title>
-	<!--  BOOTSTRAP  -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Responsive</title>
+	<link rel="icon" type="image/png" href="resources/logo.png">
+    <script src="https://kit.fontawesome.com/9584a3d4cd.js" crossorigin="anonymous"></script>
 
-<!-- links para exportar a excel -->
+	<!-- SWEET ALERT-->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
+
+	<!-- links para exportar a excel -->
     <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
     <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
 
-
-<!--SweetAlert-->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css">
-
-<!-- FOONT AWESOME -->
-<script src="https://kit.fontawesome.com/9584a3d4cd.js" crossorigin="anonymous"></script>
-<style type="text/css">
-	.barra{
-		display: block;
-		padding: 15px 15px 15px 20px;
-	color: white;
-	
-	text-decoration: none;
-	}
-	a.barra:hover {color:yellow;}
-
-
-
-.contenedor{
-	width: 100vw;
-	display: flex;
-}
-
-.cabecera{
-	background-color: #3BA6F7;
-	width: 100vw;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-}
-
-ul{
-	list-style: none;
-}
-
-ul li{
-	margin: 10px 10px;
-	max-width: 12rem;
-	width: 12rem;
-}
-
-ul li:hover{
-	background-color: #9FDEDC;
-
-}
-
-
-ul li a{
-	text-decoration: none;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	color: #4F3A3D;
-	width: 12rem;
-	max-width: 12rem;
-}
-
-@media(max-width: 980px){
-	.lista-alumno{
-		overflow: auto;
-	}
-
-
-}
-
-
-@media(min-width: 1024px) {
-	
-
-	.menu-cont{
-		max-width: 16rem;
-		width: 16rem; 
-		margin-left: -150px;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.tablas{
-		margin-left: -150px;
-	}
-
-	.registro{
-		width: 20rem;
-		margin-left: -125px;
-		justify-content: center;
-		align-items: center;
-	}
-
-
-
-	
-
-}
-</style>
-</head>
-<body>
+  </head>
+  <body>
     <% if(login) { %>
-	<nav class="contenedor">
-		<div class="cabecera">
-			<a href="menuInicio" class="navbar-brand"> <img src="resources/logo.png"> </a>
-			<a class="barra" href="menuInicio">Menú Principal <i class="fa-solid fa-house"></i> </a>
-			<a class="barra" href="salidaJefe">Cerrar Sesión <i class="fa-solid fa-right-from-bracket"></i></a>
-		</div>
-		
-	</nav>
-
-<div class="container p-4">
-	<div class="row">
-		<div class = "col-md-4">
-
-			<div class="card card-body menu-cont">
+    <input id="checkbox" type="checkbox">
+    <header class="cabecera">
+      <h2>ITCG - <b> Departamento Actividades Extraescolares </b> <label for="checkbox">
+          <i id="btn" class="fa-solid fa-bars"></i> </label> </h2>
+      <label> <i id="navbtn" class="fa-solid fa-bars"></i> </label> </header>
+    <div id="body" class="body">
+      <nav id="menu" d="" class="menu active">
+        <!-- <div class="user-p"> <img src="itcg.jpg">
+          <h3>Mi nombre</h3>
+        </div> -->
+        <ul>
+          <li> <a href="/prueba"> <i class="fa-solid fa-desktop"></i> <span>Inicio</span>
+            </a> </li>
+			<li> <a href="/registraAlumno"> <i class="fa-regular fa-clipboard"></i> <span>Alumnos</span>
+            </a> </li>
+			<li> <a href="/listaPromotores"> <i class="fa-solid fa-volleyball"></i> <span>Actividades</span>
+            </a> </li>
+			<li> <a href=""> <i class="fa-regular fa-clipboard"></i> <span>Avisos</span>
+            </a> </li>
 			
-				<ul class="menu-lateral">
-					<li>
-						<a class="btn btn-success btn-block" href="listaAlumnos"><i class="fa-solid fa-user-pen"></i> Lista Alumnos</a>
-					</li>
-					<li>
-						<a class="btn btn-success btn-block" href="listaPromotor"><i class="fa-solid fa-user-pen"></i> Lista Promotores</a>
-					</li>
-					<li>
-						<a class="btn btn-success btn-block" href="actividades"><i class="fa-solid fa-clipboard-list"></i> Actividades En Curso</a>
-					</li>
-					<li>
-						<a class="btn btn-success btn-block" href="seleccionServicioPromotor"><i class="fa-solid fa-user-pen"></i> Registro Usuario</a>
-					</li>
-					<li>
-						<a class="btn btn-success btn-block" href="crearAviso"><i class="fa-solid fa-file-pen"></i> Registrar Avisos</a>
-					</li>
+          <li> <a href="/loginJefe"> <i class="fa-solid fa-power-off"></i> <span>Sesión</span>
+            </a> </li>
+        </ul>
+      </nav>
+      <div id="ventana" class="ventana">
+        <main class="table">
+          <section class="table__header">
+            <h4 class="titulo-tabla">Actividades</h4>
+            <div class="input-group"> <input placeholder="Buscar Alumno" type="search">
+              <i class="fa-solid fa-magnifying-glass"></i> </div>
+            <div class="export__file"> <label for="export-file" class="export__file-btn"
 
-					<li>
-						<a class="btn btn-success btn-block" href="calificaciones"><i class="fa-solid fa-file-pen"></i>Calificaciones</a>
-					</li>
+                title="Export File"></label> <input id="export-file"
 
-					<li>
-						<a class="btn btn-success btn-block" href="editarAdmin"><i class="fa-solid fa-file-pen"></i>Cambiar contraseña</a>
-					</li>
+                type="checkbox">
+              <div class="export__file-options"> <label>Descargar Excel</label>
+                </label> <label for="export-file" id="btnExportar">EXCEL<img
 
-				</ul>
-			</div>
+                    src="resources/excel.png" alt="">
+				</label> <label for="export-file"
 
+                  id="toCSV">Volver</label> </div>
+            </div>
+          </section>
+          <section class="table__body">
+            <table id="tabla">
+              <thead>
+                <tr>
+					<th> Número Control </th>
+					<th> Nombre </th>
+                  <th> Apellido Paterno </th>
+                  <th> Apellido Materno </th>
+                  <th> Carrera </th>
+				  
+                  <th> Telefono </th>
+                  <th> Semestre </th>
+				  <th> N° Actividad </th>
+                  <th> Actividad </th>
+                </tr>
+              </thead>
 
-		</div>
+              <tbody>       
+                <% results.forEach( (alumno) => { %>
+                    <tr>
+                        <td><%= alumno.numero_control %> </td>
+                            <td><%= alumno.nombre %> </td>
+                            <td><%= alumno.apellido_paterno %></td>
+                            <td><%= alumno.apellido_materno %></td>
+                            <td><%= alumno.carrera %></td>
+                            
+                            <td><%= alumno.telefono %></td>
+                            <td><%= alumno.semestre %></td>
+                            <td><%= alumno.idActividad %></td>
+                            <td><%= alumno.actividad %></td>
 
-		<div class="col-md-8">
-			<table class="table table-bordered tablas">
-				<thead>
-				<tr>
-					<th>Nombre Promotor</th>
-					<th>Apellido Paterno</th>
-					<th>Apellido Materno</th>
-					<th>Actividad</th>
-					
-					
-					
+                            <td>
 
-				</tr>
-				</thead>
+								<a onclick="confirmar(<%= alumno.numero_control %>)" value="Eliminar" class="button-eliminar"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                            <td>
+								<a value="Editar" class="button-editar" href="/editarAlumnos/<%= alumno.numero_control %>">Editar</a>
+                            </td>
 
-				<tbody>
-					
-							<tr>
-								<td>Promotor xyz </td>
-									<td>Andrade </td>
-									<td>Juare</td>
-									<td>FutbolId</td>
-									
-									<td>
-										<form action="eliminarPromotor" method="POST">
-											<input type="hidden" name="idPromotor" value="<?php echo $row['idPromotor']?>">
-											<input class="btn btn-danger" type="submit" name="eliminar" value="Eliminar" onclick="return confirmacion()">
-										</form>
-
-
-
-										
-									</td>
-
-									
-								
-							</tr>
-						
-						
-
-
-				</tbody>
-			</table>
-		</div>
-
-	</div>
+                            <td>
+								<a value="Constancia" class="button-editar" href="/crearConstancia/<%= alumno.numero_control %>">Constancia</a>
+                            </td>
+                        
+                    </tr>
+                <% } ) %>
+                
 
 
-</div>
+        </tbody>
 
-<% } else { %>
-    <h2>Por favor Inicie Sesión <%= name %> </h2>
-<% } %>
-	<!-- SCRIPTS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            </table>
+          </section>
+        </main>
+      </div>
+    </div>
+    <style type="text/css">
+	
+
+	h2{
+		font-size: 14px;
+	}
+
+	
+	@media (max-width: 1000px) {
+    td:not(:first-of-type) {
+        min-width: 12.1rem;
+    }
+}
+
+	.titulo-tabla{
+		color: white;
+		font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	}
+
+	/*Aquí van los estilos para la tabla */
+
+	body{
+		min-height: 100vh;
+	}
+
+	main.table{
+		top: 60px;
+		left: 20px;
+		position: relative;
+		width: 92vw;
+		height: 90vh;
+		background-color: #fff5;
+		backdrop-filter: blur(7px);
+		box-shadow: 0 .4rem .8rem #0005;
+		border-radius: .8rem;
+		overflow: hidden;
+
+	}
+
+	.table__header{
+
+		width: 100%;
+		height: 10%;
+		background-color: #fff4;
+		padding: .8rem 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.table__header .input-group{
+		width: 35%;
+		height: 100%;
+		background-color: #fff5;
+		padding: 0 .8rem;
+		border-radius: 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		transition: .2s;
+
+	}
+
+	.table__header .input-group:hover{
+		width: 45%;
+		background-color: #fff8;
+		box-shadow: 0 .1rem .4rem #0002;
+
+	}
+
+	.table__header .input-group i{
+		width: 1.2rem;
+		height: 1.2rem;
+	}
+
+	.table__header .input-group input{
+		width: 100%;
+		padding: 0 .5rem 0 .3rem;
+		background-color: transparent;
+		border: none;
+		outline: none;
+	}
+
+	.table__body{
+		width: 95%;
+		max-height: calc(89% - 1.6rem);
+		background-color: #fffb;
+		margin: .8rem auto;
+		border-radius: .6rem;
+		overflow: auto;
+		
+	}
 
 
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+.table__body::-webkit-scrollbar{
+		width: 0.5rem;
+		height: 0.5rem;
+	}
 
+	.table__body::-webkit-scrollbar-thumb{
+		border-radius: .5rem;
+		background-color: #0004;
+		visibility: hidden;
+	}
+
+	.table__body:hover::-webkit-scrollbar-thumb{
+		visibility: visible;
+	}
+
+	table{
+		width: 100%;
+	}
+
+	td img{
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		margin-right: .5rem;
+		vertical-align: middle;
+	}
+
+	table, th, td{
+		border-collapse: collapse;
+		padding: 1rem;
+		text-align: left;
+	}
+
+	thead th{
+		position: sticky;
+		top: 0;
+		left: 0;
+		background-color: #d5d1defe;
+		cursor: pointer;
+		text-transform: capitalize;
+	}
+
+	tbody tr:nth-child(even){
+		background-color: #0000000b;
+	}
+
+	tbody tr{
+		--delay: .1s;
+		transition: .5s ease-in-out var(--delay), background-color 0s;
+	}
+
+	tbody tr.hide{
+		opacity: 0;
+		transform: translateX(100%);
+	}
+
+	tbody tr:hover{
+		background-color: #fff !important;
+	}
+
+	tbody tr td,
+	 tbody tr td p, 
+	 tbody tr td img{
+		transition: .2s ease-in-out;
+	}
+
+	tbody tr.hide td, tbody tr.hide td p{
+		padding: 0;
+		font: 0 / 0 sans-serif;
+		transition: .2s ease-in-out .5s;
+	}
+
+	tbody tr.hide td img{
+		width: 0;
+		height: 0;
+		transition: .2s ease-in-out .5s;
+	}
+
+	.status{
+		padding: .4rem 0;
+		border-radius: 2rem;
+		text-align: center;
+	}
+
+	.status.delivered{
+		background-color: #86e49d;
+		color: #006b21;
+	}
+
+	.status.cancelled{
+		background-color: #d893a3;
+		color: #b30021;
+	}
+
+	.status.pending{
+		background-color: #ebc474;
+	}
+
+	.status.shipped{
+		background-color: #6fcaea;
+	}
+
+	/* Estilos Flechas */
+	thead th span.icon-arrow{
+		display: inline-block;
+		width: 1.3rem;
+		height: 1.3rem;
+		border-radius: 50%;
+		border: 1.4px solid transparent;
+
+		text-align: center;
+		font-size: 1rem;
+
+		margin-left: .5rem;
+		transition: .2s ease-in-out;
+
+	}
+
+
+	thead th:hover span.icon-arrow{
+		border: 1.4px solid #6c00bd;
+	}
+
+	thead th:hover{
+		color: #6c00bd;
+	}
+
+	thead th.active span.icon-arrow{
+		background-color: #6c00bd;
+		color: #fff;
+	}
+
+	thead th.asc span.icon-arrow{
+		transform: rotate(180deg);
+	}
+
+	thead th.active, tbody td.active{
+		color: #6c00bd;
+	}
+
+	/* Estilos boton de Export */
+	.export__file{
+		position: relative;
+	}
+
+	.export__file .export__file-btn{
+		display: inline-block;
+		width: 2rem;
+		height: 2rem;
+		background: #fff6 url('resources/export.png') center/80% no-repeat;
+		border-radius: 50%;
+		transition: .2s ease-in-out;
+	}
+
+	.export__file .export__file-btn:hover{
+		background-color: #fff;
+		cursor: pointer;
+		transform: scale(1.15);
+	}
+
+	.export__file input{
+		display: none;
+	}
+
+	.export__file .export__file-options{
+		
+		display: none;
+		right: 0;
+
+		width: 12rem;
+		border-radius: .5rem;
+		overflow: hidden;
+		text-align: center;
+
+		opacity: 0;
+		transform: scale(.8);
+		transform-origin: top right;
+		box-shadow: 0 .2rem .5rem #0004;
+		transition: .2s;
+
+	}
+
+	.export__file input:checked + .export__file-options{
+		opacity: 1;
+		display: inline-block;
+		position: absolute;
+		transform: scale(1);
+		z-index: 100;
+	}
+
+
+	.export__file .export__file-options label{
+		display: block;
+		width: 100%;
+		padding: .6rem 0;
+		background-color: #f2f2f2;
+
+		justify-content: space-around;
+		align-items: center;
+
+		transition: .2s ease-in-out;
+
+	}
+
+	.export__file .export__file-options label:first-of-type{
+		padding: 1rem;
+		background-color: #86e49d !important;
+	}
+
+	.export__file .export__file-options label:hover{
+		transform: scale(1.05);
+		background-color: #fff;
+		cursor: pointer;
+	}
+
+	.export__file .export__file-options img{
+		width: 2rem;
+		height: auto;
+	}
+
+	
+	.cabecera b{
+		color: #127b8e;
+	}
+
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.body .menu .user-p{
+		padding-top: 20px;
+		padding-left: 20px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.body .menu .user-p h3{
+		font-size: 18px;
+		color: white;
+	}
+
+	.body .menu .user-p img{
+		width: 100px;
+		border-radius: 25%;
+		margin-bottom: 10px;
+	}
+
+	.ventana{
+		/* background: url('https://www.xtrafondos.com/wallpapers/montanas-en-el-bosque-11688.jpg'); */
+		background: url('https://www.xtrafondos.com/wallpapers/arbol-de-navidad-en-alaska-11397.jpg') center/cover;
+		width: 100%;
+		min-height: 100vh;
+		display: flex;
+		
+		
+
+	}
+
+	
+
+	#checkbox{
+		display: none;
+	}
+
+	#btn{
+		display: none;
+	}
+
+
+
+	.cabecera{
+		display: flex;
+		position: fixed;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+		color: white;
+		background: black;
+		padding: 15px 30px;
+		z-index: 999;
+
+	}
+
+	.menu{
+		width: 200px;
+		min-height: 100vh;
+		transition: 500ms width;
+		background: #121017;
+		position: absolute;
+		box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+		visibility: hidden;
+		z-index: 1000;
+	}
+
+	.body .menu ul{
+		list-style: none;
+
+	}
+
+	.body .menu ul li{
+		padding: 15px 0;
+		font-size: 16px;
+		transition: 500ms background;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.body .menu ul li a{
+		text-decoration: none;
+		color: #fff;
+		padding-left: 15px;
+		cursor: pointer;
+	}
+
+	.body .menu ul li a i{
+		margin-right: 10px;
+	}
+
+	.body .menu ul li a span{
+		letter-spacing: 1px;
+		
+	}
+
+	.body .menu ul li:hover{
+		background: #5BA2EA;
+	}
+
+	
+
+	#navbtn{
+		cursor: pointer;
+		font-size: 23px;
+	}
+
+	.active{
+		transform: translate(-400px);
+
+	}
+
+	.mostrar{
+		visibility: visible;
+	}
+
+	
+
+
+	@media (min-width: 1024px) {
+
+		.ventana{
+			margin-top: -50px;
+		}
+
+		#navbtn{
+			display: none;
+		}
+
+		.body{
+			display: flex;
+		}
+
+		.cabecera{
+			position: relative;
+		}
+
+		.active{
+			transform: translate(0);
+		}
+
+		.menu{
+			position: relative;
+			box-shadow: none;
+			visibility: visible;
+		}
+
+		#btn{
+		display: inline-block;
+		color: white;
+		font-size: 23px;
+		cursor: pointer;
+		margin-left: 20px;
+	}
+
+	#btn:hover{
+		color: #3B68EA;
+	}
+
+	#checkbox:checked ~ .body .menu{
+		width: 65px;
+	}
+
+	#checkbox:checked ~ .body .menu ul li a span{
+		display: none;
+	}
+
+	#checkbox:checked ~ .body .user-p{
+		visibility: hidden;
+	}
+
+
+	}
+
+
+
+	
+
+
+/* CSS */
+.button-editar {
+  text-decoration: none;
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 5px 15px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-editar:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-editar {
+    padding: 5px 15px;
+  }
+}
+
+
+
+
+/* CSS */
+.button-eliminar {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 5px 7px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-eliminar:hover,
+.button-eliminar:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button-24:eliminar {
+  opacity: .5;
+}
+
+</style>
 <script type="text/javascript">
-	function confirmacion(){
+/*Función para eliminar registros*/
+function confirmacion(){
 		var respuesta = confirm("¿Desea eliminar el registro?");
 		if(respuesta === true){
 			return true;
 		}else{
 			return false;
 		}
-	}
+}
+
+/*Función con SweetAlert*/
+function confirmar(nc){
+	Swal.fire({
+  title: "¿Está seguro de eliminar el registro?",
+  text: "Una vez hecho, no se recuperan los datos",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Si, Eliminar"
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location = "/eliminarAlumno/"+nc
+  }
+});
+}
+
+
+	
+	const icono = document.querySelector("#navbtn");
+	menu = document.querySelector("#menu");
+	
+
+	icono.addEventListener("click", (e) => {
+
+		menu.classList.toggle("active");
+		menu.classList.toggle("mostrar");
+		
+	});
+
+
+const search = document.querySelector('.input-group input'),
+    table_rows = document.querySelectorAll('tbody tr'),
+    table_headings = document.querySelectorAll('thead th');
+
+// 1. Searching for specific data of HTML table
+search.addEventListener('input', searchTable);
+
+function searchTable() {
+    table_rows.forEach((row, i) => {
+        let table_data = row.textContent.toLowerCase(),
+            search_data = search.value.toLowerCase();
+
+        row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
+        row.style.setProperty('--delay', i / 25 + 's');
+    })
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+        visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
+    });
+}
+
+
+
+
+
+
 </script>
 
-</body>
+
+<!-- script para exportar a excel -->
+<script>
+    const $btnExportar = document.querySelector("#btnExportar"),
+        $tabla = document.querySelector("#tabla");
+
+    $btnExportar.addEventListener("click", function() {
+        let tableExport = new TableExport($tabla, {
+            exportButtons: false, // No queremos botones
+            filename: "Reporte de prueba", //Nombre del archivo de Excel
+            sheetname: "Reporte de prueba", //Título de la hoja
+        });
+        let datos = tableExport.getExportData();
+        let preferenciasDocumento = datos.tabla.xlsx;
+        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
+    });
+</script>
+<% } else { %>
+    <h2>Por favor Inicie Sesión <%= name %> </h2>
+<% } %>
+<% if(typeof(alert) != "undefined") {%>
+	<script>
+		Swal.fire({
+			title: "<%= alertTitle %>",
+			text: "<%= alertMessage %>",
+			icon: "<%= alertIcon %>",
+			showConfirmButton: <%= showConfirmButton %>,
+			timer: <%= timer %>
+		}).then( () => {
+			window.location="/<%= ruta %>"
+		})
+	</script>
+ 
+	<% }else{
+		console.log("Sin datos de variable")
+	} %>
+
+  </body>
 </html>
