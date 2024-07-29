@@ -502,34 +502,34 @@ app.post("/inicia", (req, res) => {
 });
 
 //Menu principal para el jefe de departamento
-app.get("/menuInicio", (req, res) => {
-  if (req.session.loggedin) {
-    console.log("Intentar desplegar");
-    conection.query(
-      //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
-      "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
-      (error, results) => {
-        if (error) {
-          console.log(error);
-        } else {
-          return res.render("menuInicio", {
-            results: results,
-            login: true,
-          });
-        }
-      }
-    );
-  } else {
-    return res.render("loginJefe", {
-      login: false,
-      name: "Debes Iniciar Sesión",
-    });
-  }
-  return res.end();
-});
+// app.get("/menuInicio", (req, res) => {
+//   if (req.session.loggedin) {
+//     console.log("Intentar desplegar");
+//     conection.query(
+//       //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+//       "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
+//       (error, results) => {
+//         if (error) {
+//           console.log(error);
+//         } else {
+//           return res.render("menuInicio", {
+//             results: results,
+//             login: true,
+//           });
+//         }
+//       }
+//     );
+//   } else {
+//     return res.render("loginJefe", {
+//       login: false,
+//       name: "Debes Iniciar Sesión",
+//     });
+//   }
+//   return res.end();
+// });
 
 //Menu Inicio anterior
-app.get("/menuInicioAnterior", (req, res) => {
+app.get("/menuInicio", (req, res) => {
   if (req.session.loggedin) {
     res.render("menuInicio", {
       login: true,
