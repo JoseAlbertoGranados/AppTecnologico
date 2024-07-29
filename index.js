@@ -512,7 +512,7 @@ app.get("/menuInicio", (req, res) => {
           res.send("Error en la busqueda de datos");
           console.log(error);
         } else {
-          res.render("menuInicio", {
+          return res.render("menuInicio", {
             results: results,
             login: true,
             name: req.session.name,
