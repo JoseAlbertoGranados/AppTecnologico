@@ -526,7 +526,7 @@ app.get("/menuInicio", (req, res) => {
       name: "Debes Iniciar Sesión",
     });
   }
-  res.end();
+  return res.end();
 });
 
 //Menu Inicio anterior
