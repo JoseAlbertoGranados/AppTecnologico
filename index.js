@@ -509,7 +509,7 @@ app.get("/menuInicio", (req, res) => {
       "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
       (error, results) => {
         if (error) {
-          res.send("Error en la busqueda de datos");
+          return res.send("Error en la busqueda de datos");
           console.log(error);
         } else {
           return res.render("menuInicio", {
@@ -521,7 +521,7 @@ app.get("/menuInicio", (req, res) => {
       }
     );
   } else {
-    res.render("loginJefe", {
+    return res.render("loginJefe", {
       login: false,
       name: "Debes Iniciar Sesión",
     });
@@ -608,7 +608,7 @@ app.post("/iniciaPrueba", (req, res) => {
           results == 0 ||
           !(await bcryptjs.compare(pass, results[0].password))
         ) {
-          res.render("loginJefe", {
+          return res.render("loginJefe", {
             alert: true,
             alertTitle: "Error",
             alertMessage: "Usuario y/o contraseña incorrectos",
@@ -621,7 +621,7 @@ app.post("/iniciaPrueba", (req, res) => {
           req.session.loggedin = true;
           req.session.name = results[0].usuario;
           console.log(results[0].usuario);
-          res.render("loginJefe", {
+          return res.render("loginJefe", {
             alert: true,
             alertTitle: "Éxito",
             alertMessage: "Iniciando Sesión",
