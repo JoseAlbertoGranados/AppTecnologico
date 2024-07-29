@@ -510,7 +510,6 @@ app.get("/menuInicio", (req, res) => {
       "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
       (error, results) => {
         if (error) {
-          return res.send("Error en la busqueda de datos");
           console.log(error);
         } else {
           return res.render("menuInicio", {
