@@ -504,6 +504,7 @@ app.post("/inicia", (req, res) => {
 //Menu principal para el jefe de departamento
 app.get("/menuInicio", (req, res) => {
   if (req.session.loggedin) {
+    console.log("Intentar desplegar");
     conection.query(
       //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
       "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
@@ -515,7 +516,7 @@ app.get("/menuInicio", (req, res) => {
           return res.render("menuInicio", {
             results: results,
             login: true,
-            //name: req.session.name,
+            name: req.session.name,
           });
         }
       }
