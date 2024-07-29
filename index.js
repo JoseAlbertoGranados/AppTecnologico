@@ -590,6 +590,11 @@ app.get("/prueba", (req, res) => {
         }
       }
     );
+  } else {
+    res.render("loginJefe", {
+      login: false,
+      name: "Debes Iniciar Sesión",
+    });
   }
 });
 
