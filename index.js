@@ -515,8 +515,6 @@ app.get("/menuInicio", (req, res) => {
         } else {
           return res.render("menuInicio", {
             results: results,
-            login: true,
-            name: req.session.name,
           });
         }
       }
