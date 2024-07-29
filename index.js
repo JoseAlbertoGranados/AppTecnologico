@@ -493,7 +493,7 @@ app.post("/inicia", (req, res) => {
             alertIcon: "success",
             showConfirmButton: false,
             timer: 1500,
-            ruta: "menuInicio",
+            ruta: "prueba",
           });
         }
       }
