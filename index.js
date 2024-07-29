@@ -573,22 +573,24 @@ app.get("/listaAlumnos", (req, res) => {
 //Prueba para tabla de alumnos
 //Lista de alumnos para el jefe de departamento
 app.get("/prueba", (req, res) => {
-  conection.query(
-    //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
-    "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
-    (error, results) => {
-      if (error) {
-        res.send("Error en la busqueda de datos");
-        console.log(error);
-      } else {
-        res.render("prueba", {
-          results: results,
-          login: true,
-          name: req.session.name,
-        });
+  if (req.session.loggedin) {
+    conection.query(
+      //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+      "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
+      (error, results) => {
+        if (error) {
+          res.send("Error en la busqueda de datos");
+          console.log(error);
+        } else {
+          res.render("prueba", {
+            results: results,
+            login: true,
+            name: req.session.name,
+          });
+        }
       }
-    }
-  );
+    );
+  }
 });
 
 //Prueba de inicio sesion
