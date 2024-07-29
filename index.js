@@ -504,6 +504,34 @@ app.post("/inicia", (req, res) => {
 //Menu principal para el jefe de departamento
 app.get("/menuInicio", (req, res) => {
   if (req.session.loggedin) {
+    conection.query(
+      //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
+      "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.idActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
+      (error, results) => {
+        if (error) {
+          res.send("Error en la busqueda de datos");
+          console.log(error);
+        } else {
+          res.render("menuInicio", {
+            results: results,
+            login: true,
+            name: req.session.name,
+          });
+        }
+      }
+    );
+  } else {
+    res.render("loginJefe", {
+      login: false,
+      name: "Debes Iniciar Sesión",
+    });
+  }
+  res.end();
+});
+
+//Menu Inicio anterior
+app.get("/menuInicioAnterior", (req, res) => {
+  if (req.session.loggedin) {
     res.render("menuInicio", {
       login: true,
       name: req.session.name,
@@ -562,6 +590,50 @@ app.get("/prueba", (req, res) => {
       }
     }
   );
+});
+
+//Prueba de inicio sesion
+//Validar el inicio de sesión del jefe de departamento
+app.post("/iniciaPrueba", (req, res) => {
+  const usuario = req.body.usuario;
+  const pass = req.body.password;
+  var salt = bcryptjs.genSaltSync(10);
+  var passHaas = bcryptjs.hashSync(pass, salt);
+  if (usuario && pass) {
+    conection.query(
+      "SELECT * FROM usuarios WHERE usuario = ?",
+      [usuario],
+      async (error, results) => {
+        if (
+          results == 0 ||
+          !(await bcryptjs.compare(pass, results[0].password))
+        ) {
+          res.render("loginJefe", {
+            alert: true,
+            alertTitle: "Error",
+            alertMessage: "Usuario y/o contraseña incorrectos",
+            alertIcon: "danger",
+            showConfirmButton: true,
+            timer: false,
+            ruta: "loginJefe",
+          });
+        } else {
+          req.session.loggedin = true;
+          req.session.name = results[0].usuario;
+          console.log(results[0].usuario);
+          res.render("loginJefe", {
+            alert: true,
+            alertTitle: "Éxito",
+            alertMessage: "Iniciando Sesión",
+            alertIcon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+            ruta: "menuInicio",
+          });
+        }
+      }
+    );
+  }
 });
 
 //Eliminar registros de alumnos
