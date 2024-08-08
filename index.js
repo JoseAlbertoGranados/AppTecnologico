@@ -159,7 +159,16 @@ app.get("/eliminarPromotor/:id", (req, res) => {
 });
 
 app.post("/guardaPromotor", (req, res) => {
-  const { nombre, paterno, materno, idActividad, actividad } = req.body;
+  const {
+    nombre,
+    paterno,
+    materno,
+    idActividad,
+    actividad,
+    horario,
+    lugar,
+    tipoActividad,
+  } = req.body;
 
   conection.query(
     "INSERT INTO actividades VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
