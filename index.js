@@ -162,8 +162,17 @@ app.post("/guardaPromotor", (req, res) => {
   const { nombre, paterno, materno, idActividad, actividad } = req.body;
 
   conection.query(
-    "INSERT INTO actividades VALUES (?, ?, ?, ?, ?)",
-    [idActividad, nombre, paterno, materno, actividad],
+    "INSERT INTO actividades VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      idActividad,
+      nombre,
+      paterno,
+      materno,
+      actividad,
+      horario,
+      lugar,
+      tipoActividad,
+    ],
     (error, results) => {
       if (error) {
         console.log(error);

@@ -175,31 +175,41 @@
          <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Actividad</th>
+                <th scope="col">Tipo Actividad</th>
+                <th scope="col">Imparte</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Lugar</th>
               </tr>
             </thead>
             <tbody>
+               <% if (listaPromotor){ listaPromotor.forEach( (promotor) => {  %>
+            
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td><%= promotor.actividad %> </td>
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td><%= promotor.tipoActividad %> </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td><%= promotor.promotor %> <%= promotor.apellido_paterno %></td>
               </tr>
+
+              <tr>
+               <th scope="row">4</th>
+               <td><%= promotor.horario %> </td>
+             </tr>
+
+             <tr>
+               <th scope="row">5</th>
+               <td><%= promotor.lugar %> </td>
+             </tr>
+
+
+              <% }) } %>
             </tbody>
           </table>
 
