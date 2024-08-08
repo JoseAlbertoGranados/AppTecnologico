@@ -66,9 +66,9 @@
               <thead>
                 <tr>
 					<th> Número Control </th>
-					<th> Nombre </th>
-                  <th> Apellido Paterno </th>
-                  <th> Apellido Materno </th>
+					<th> Nombre Completo </th>
+                  <!-- <th> Apellido Paterno </th>
+                  <th> Apellido Materno </th> -->
                   <th> Carrera </th>
 				  
                   <th> Telefono </th>
@@ -82,9 +82,9 @@
                 <% results.forEach( (alumno) => { %>
                     <tr>
                         <td><%= alumno.numero_control %> </td>
-                            <td><%= alumno.nombre %> </td>
-                            <td><%= alumno.apellido_paterno %></td>
-                            <td><%= alumno.apellido_materno %></td>
+                            <td><%= alumno.nombre %> <%= alumno.apellido_paterno %> <%= alumno.apellido_materno %></td>
+                            <!-- <td><%= alumno.apellido_paterno %></td>
+                            <td><%= alumno.apellido_materno %></td> -->
                             <td><%= alumno.carrera %></td>
                             
                             <td><%= alumno.telefono %></td>
