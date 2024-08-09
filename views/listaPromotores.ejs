@@ -70,7 +70,7 @@
                   <th> Apellido Paterno </th>
                   <th> Apellido Materno </th>
                   <th> Actividad </th>
-				  
+				  <th> Tipo Actividad </th>
                   
                 </tr>
               </thead>
@@ -83,6 +83,7 @@
                             <td><%= promotor.apellido_paterno %></td>
                             <td><%= promotor.apellido_materno %></td>
                             <td><%= promotor.actividad %></td>
+							<td><%= promotor.tipoActividad %></td>
                             <td>
 
 								<a onclick="confirmar(<%= promotor.idActividad %>)" value="Eliminar" class="button-eliminar"><i class="fa-solid fa-trash-can"></i></a>
