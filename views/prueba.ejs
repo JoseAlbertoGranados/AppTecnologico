@@ -775,8 +775,8 @@ function searchTable() {
     $btnExportar.addEventListener("click", function() {
         let tableExport = new TableExport($tabla, {
             exportButtons: false, // No queremos botones
-            filename: "Reporte de prueba", //Nombre del archivo de Excel
-            sheetname: "Reporte de prueba", //Título de la hoja
+            filename: "Lista Alumnos Actividades", //Nombre del archivo de Excel
+            sheetname: "Lista Alumnos Actividades", //Título de la hoja
         });
         let datos = tableExport.getExportData();
         let preferenciasDocumento = datos.tabla.xlsx;
