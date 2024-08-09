@@ -67,8 +67,8 @@
                 <tr>
 					<th> Número Actividad </th>
 					<th> Nombre Promotor </th>
-                  <th> Apellido Paterno </th>
-                  <th> Apellido Materno </th>
+                  <!-- <th> Apellido Paterno </th>
+                  <th> Apellido Materno </th> -->
                   <th> Actividad </th>
 				  <th> Tipo Actividad </th>
                   
@@ -79,9 +79,9 @@
                 <% results.forEach( (promotor) => { %>
                     <tr>
                         <td><%= promotor.idActividad %> </td>
-                            <td><%= promotor.promotor %> </td>
-                            <td><%= promotor.apellido_paterno %></td>
-                            <td><%= promotor.apellido_materno %></td>
+                            <td><%= promotor.promotor %> <%= promotor.apellido_paterno %> <%= promotor.apellido_materno %></td>
+                            <!-- <td><%= promotor.apellido_paterno %></td>
+                            <td><%= promotor.apellido_materno %></td> -->
                             <td><%= promotor.actividad %></td>
 							<td><%= promotor.tipoActividad %></td>
                             <td>
