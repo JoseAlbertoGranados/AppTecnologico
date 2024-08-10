@@ -476,6 +476,16 @@ app.get("/mision", (req, res) => {
   res.render("mision");
 });
 
+//Cerrar sesión
+app.get("/salir", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send("Error al cerrar sesión");
+    }
+    res.redirect("/loginJefe"); // Redirige al usuario a la página de inicio
+  });
+});
+
 //Validar el inicio de sesión del jefe de departamento
 app.post("/inicia", (req, res) => {
   const usuario = req.body.usuario;
