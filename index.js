@@ -521,7 +521,7 @@ app.post("/inicia", (req, res) => {
             alertIcon: "success",
             showConfirmButton: false,
             timer: 1500,
-            ruta: "prueba",
+            ruta: "inicio",
           });
         }
       }
@@ -600,7 +600,7 @@ app.get("/listaAlumnos", (req, res) => {
 
 //Prueba para tabla de alumnos
 //Lista de alumnos para el jefe de departamento
-app.get("/prueba", (req, res) => {
+app.get("/inicio", (req, res) => {
   if (req.session.loggedin) {
     conection.query(
       //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
@@ -610,7 +610,7 @@ app.get("/prueba", (req, res) => {
           res.send("Error en la busqueda de datos");
           console.log(error);
         } else {
-          res.render("prueba", {
+          res.render("inicio", {
             results: results,
             login: true,
             name: req.session.name,
@@ -681,7 +681,7 @@ app.get("/eliminarAlumno/:nc", (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        res.redirect("/prueba");
+        res.redirect("/inicio");
       }
     }
   );
@@ -812,7 +812,7 @@ app.post("/update", (req, res) => {
         console.log("No se actualizaron registros");
       } else {
         //Redirecciona una vez ejecutado la actualización
-        res.redirect("/prueba");
+        res.redirect("/inicio");
       }
     }
   );
