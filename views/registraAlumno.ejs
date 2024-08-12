@@ -83,9 +83,9 @@
                       <label>Semestre</label>
                       <input type="text" id="semestre" name="semestre" required/>
                     </div>
-                    <div class="select-box">
+                    <div class="input-box">
                       <label>Selecciona una actividad</label>
-                      <select name="actividad" id="actividad" required>
+                      <select class="select-box" name="actividad" id="actividad" required>
                         <option></option>
                   <% if (listaPromotor){ listaPromotor.forEach( (promotor) => {  %>
                         <option value="<%= promotor.idActividad %> "> <%= promotor.actividad %> - Impartida Por - <%= promotor.promotor %> </option>
