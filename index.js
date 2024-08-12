@@ -41,14 +41,13 @@ app.get("/loginJefe", (req, res) => {
   res.render("loginJefe");
 });
 
-/*app.get("/prueba", (req, res) => {
-  var pass = "Amanecer";
+app.get("/contrasena", (req, res) => {
+  var pass = "Tecnologico2024";
   var salt = bcryptjs.genSaltSync(10);
   var passHaas = bcryptjs.hashSync(pass, salt);
 
   res.send(passHaas);
 });
-*/
 
 //Edicion de documentos
 app.get("/crearConstancia/:numero_control", (req, res) => {
