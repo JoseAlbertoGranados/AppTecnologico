@@ -28,9 +28,9 @@
           <h3>Mi nombre</h3>
         </div>
         <ul>
-            <li> <a href="/prueba"> <i class="fa-solid fa-desktop"></i> <span>Inicio</span>
+            <li> <a href="/inicio"> <i class="fa-solid fa-desktop"></i> <span>Inicio</span>
             </a> </li>
-			<li> <a href="/prueba"> <i class="fa-regular fa-clipboard"></i> <span>Alumnos</span>
+			<li> <a href="/inicio"> <i class="fa-regular fa-clipboard"></i> <span>Alumnos</span>
             </a> </li>
 			<li> <a href="/listaPromotores"> <i class="fa-solid fa-volleyball"></i> <span>Actividades</span>
             </a> </li>
@@ -84,6 +84,8 @@
                             <td><%= promotor.apellido_materno %></td> -->
                             <td><%= promotor.actividad %></td>
 							<td><%= promotor.tipoActividad %></td>
+							<td><%= promotor.horario %></td>
+							<td><%= promotor.lugar %></td>
                             <td>
 
 								<a onclick="confirmar(<%= promotor.idActividad %>)" value="Eliminar" class="button-eliminar"><i class="fa-solid fa-trash-can"></i></a>
