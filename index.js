@@ -282,7 +282,8 @@ app.post("/inscribir", (req, res) => {
                     name: req.session.name,
                     alert: true,
                     alertTitle: "Error",
-                    alertMessage: "El alumno ya está registrado",
+                    alertMessage:
+                      "El alumno ya está registrado, cualquier duda o ayuda que necesites por favor acude al departamento de Actividades Extraescolares",
                     alertIcon: "danger",
                     showConfirmButton: true,
                     timer: false,
