@@ -43,7 +43,7 @@
         
             <section class="container">
               <header>Ingrese los datos del alumno</header>
-              <form action="guardaAlumno" method="POST"  class="form">
+              <form action="guardaAlumno" method="POST"  class="form" id="formulario">
                 <div class="input-box">
                   <label>Número de control</label>
                   <input id="numero" name="numero" type="text" value="" required/>
@@ -825,6 +825,7 @@
 </style>
 <script type="text/javascript">
 window.addEventListener("load", ()=> {
+	const form = document.querySelector("#formulario")
 	const nc = document.querySelector("#numero")
 
 	form.addEventListener("submit", (e) => {
