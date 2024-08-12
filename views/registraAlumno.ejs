@@ -47,6 +47,7 @@
                 <div class="input-box">
                   <label>Número de control</label>
                   <input id="numero" name="numero" type="text" value="" required/>
+				  <strong></strong>
                 </div>
                 
                 <div class="input-box">
@@ -785,10 +786,81 @@
   }
 }
 
+.input-box strong{
+      visibility: hidden;
+   }
 
+   .input-box.falla strong{
+      color: #fff;
+      background-color: #E61B1B;
+      visibility: visible;
+   }
+
+   .input-box.falla input{
+      border: 2px solid #E61B1B;
+   }
+
+   .validar strong{
+      visibility: hidden;
+   }
+
+   .validar.fallacheck strong{
+      color: #fff;
+      background-color: #E61B1B;
+      visibility: visible;
+   }
+
+   .validar.fallacheck input{
+      border: 2px solid #E61B1B;
+   }
+
+   .validar.ok input{
+      border: 2px solid #19D151;
+   }
+
+   .input-box.ok input{
+      border: 2px solid #19D151;
+   }
 
 </style>
 <script type="text/javascript">
+winw.addEventListener("load", ()=> {
+	const nc = document.querySelector("#numero")
+
+	form.addEventListener("submit", (e) => {
+		const ncValor = numero.value.trim()
+		if(!ncValor){
+            validaFalla(nc, "El campo está vacio")
+            nc.focus()
+            e.preventDefault()
+         }else if(ncValor.length !== 8){
+            validaFalla(nc, "El numero de control debe de ser de 8 digitos")
+            nc.focus()
+            e.preventDefault()
+         }else{
+            validaOk(nc)
+         }
+	})
+
+
+	const validaFalla = (input, msj) =>{
+         const formControl = input.parentElement
+         const aviso = formControl.querySelector("strong")
+
+         aviso.innerText = msj
+
+         formControl.className = "form-group falla"
+      }
+
+	  const validaOk = (input) =>{
+         const formControl = input.parentElement
+
+         formControl.className = "form-group ok"
+      }
+})
+
+
+
 
 function confirmacion(){
 		var respuesta = confirm("¿Desea eliminar el registro?");
