@@ -256,7 +256,7 @@ app.post("/inscribir", (req, res) => {
     carrera,
     semestre,
     actividad,
-  } = req.body.toUpperCase;
+  } = req.body;
 
   conection.query(
     "INSERT INTO alumnos VALUES (?, ?, ?, ?, ?, ?, ?, ?)",

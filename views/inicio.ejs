@@ -770,7 +770,7 @@ function searchTable() {
 <!-- script para exportar a excel -->
 <script>
     const $btnExportar = document.querySelector("#btnExportar"),
-        $tabla = document.querySelector("#tabla");
+        $tabla = document.querySelector("#tabla").toUpperCase;
 
     $btnExportar.addEventListener("click", function() {
         let tableExport = new TableExport($tabla, {
