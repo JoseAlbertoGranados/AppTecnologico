@@ -247,29 +247,29 @@ app.get("/inscripcion", (req, res) => {
 
 //Incribir Alumnos
 app.post("/inscribir", (req, res) => {
-  // const {
-  //   numero,
-  //   nombre,
-  //   paterno,
-  //   materno,
-  //   telefono,
-  //   carrera,
-  //   semestre,
-  //   actividad,
-  // } = req.body;
-  const nombre = req.body.nombre;
-  const paterno = req.body.paterno;
-  const materno = req.body.materno;
-  const carrera = req.body.carrera;
-  const numero = req.body.numero;
-  const telefono = req.body.telefono;
-  const semestre = req.body.semestre;
-  const actividad = req.body.actividad;
+  const {
+    numero,
+    nombre,
+    paterno,
+    materno,
+    telefono,
+    carrera,
+    semestre,
+    actividad,
+  } = req.body;
+  // const nombre = req.body.nombre;
+  // const paterno = req.body.paterno;
+  // const materno = req.body.materno;
+  // const carrera = req.body.carrera;
+  // const numero = req.body.numero;
+  // const telefono = req.body.telefono;
+  // const semestre = req.body.semestre;
+  // const actividad = req.body.actividad;
 
-  nombre = nombre.toUpperCase;
-  paterno = paterno.toUpperCase;
-  materno = materno.toUpperCase;
-  carrera = carrera.toUpperCase;
+  // nombre = nombre.toUpperCase;
+  // paterno = paterno.toUpperCase;
+  // materno = materno.toUpperCase;
+  // carrera = carrera.toUpperCase;
 
   conection.query(
     "INSERT INTO alumnos VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
@@ -617,7 +617,7 @@ app.get("/inicio", (req, res) => {
   if (req.session.loggedin) {
     conection.query(
       //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
-      "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.tipoActividad, actividades.actividad, actividades.promotor, actividades.apellido_paterno AS apellidoPpromotor, actividades.apellido_materno AS apellidoMpromotor FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
+      "SELECT numero_control, UPPER(nombre), UPPER(alumnos.apellido_paterno), UPPER(alumnos.apellido_materno), UPPER(carrera), telefono, semestre, UPPER(actividades.tipoActividad), UPPER(actividades.actividad), UPPER(actividades.promotor), UPPER(actividades.apellido_paterno) AS apellidoPpromotor, UPPER(actividades.apellido_materno) AS apellidoMpromotor FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
       (error, results) => {
         if (error) {
           res.send("Error en la busqueda de datos");
