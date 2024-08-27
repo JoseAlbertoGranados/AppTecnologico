@@ -141,6 +141,10 @@
 		min-height: 100vh;
 	}
 
+	td{
+		text-transform: uppercase;
+	}
+
 	main.table{
 		top: 60px;
 		left: 20px;
@@ -770,7 +774,7 @@ function searchTable() {
 <!-- script para exportar a excel -->
 <script>
     const $btnExportar = document.querySelector("#btnExportar"),
-        $tabla = document.querySelector("#tabla").toUpperCase;
+        $tabla = document.querySelector("#tabla");
 
     $btnExportar.addEventListener("click", function() {
         let tableExport = new TableExport($tabla, {
