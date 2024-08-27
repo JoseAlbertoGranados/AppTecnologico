@@ -75,6 +75,7 @@
                   <th> Semestre </th>
 				  <th> Tipo Actividad </th>
                   <th> Actividad </th>
+				  <th> Promotor </th>
                 </tr>
               </thead>
 
@@ -91,7 +92,7 @@
                             <td><%= alumno.semestre %></td>
                             <td><%= alumno.tipoActividad %></td>
                             <td><%= alumno.actividad %></td>
-
+							<td><%= alumno.promotor %> <%= alumno.apellidoPpromotor %> <%= alumno.apellidoMpromotor %></td>
                             <td>
 
 								<a onclick="confirmar(<%= alumno.numero_control %>)" value="Eliminar" class="button-eliminar"><i class="fa-solid fa-trash-can"></i></a>

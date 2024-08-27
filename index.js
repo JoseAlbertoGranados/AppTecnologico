@@ -604,7 +604,7 @@ app.get("/inicio", (req, res) => {
   if (req.session.loggedin) {
     conection.query(
       //"SELECT * FROM alumnos, promotores WHERE idPromotor = actividad",
-      "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.tipoActividad, actividades.actividad FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
+      "SELECT numero_control, nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, actividades.tipoActividad, actividades.actividad, actividades.promotor, actividades.apellido_paterno AS apellidoPpromotor, actividades.apellido_materno AS apellidoMpromotor FROM alumnos, actividades WHERE actividades.idActividad = alumnos.actividad",
       (error, results) => {
         if (error) {
           res.send("Error en la busqueda de datos");
