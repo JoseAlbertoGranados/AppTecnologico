@@ -258,6 +258,11 @@ app.post("/inscribir", (req, res) => {
     actividad,
   } = req.body;
 
+  nombre = nombre.toUpperCase;
+  paterno = paterno.toUpperCase;
+  materno = materno.toUpperCase;
+  carrera = carrera.toUpperCase;
+
   conection.query(
     "INSERT INTO alumnos VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     [numero, nombre, paterno, materno, carrera, telefono, semestre, actividad],
