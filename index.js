@@ -247,16 +247,24 @@ app.get("/inscripcion", (req, res) => {
 
 //Incribir Alumnos
 app.post("/inscribir", (req, res) => {
-  const {
-    numero,
-    nombre,
-    paterno,
-    materno,
-    telefono,
-    carrera,
-    semestre,
-    actividad,
-  } = req.body;
+  // const {
+  //   numero,
+  //   nombre,
+  //   paterno,
+  //   materno,
+  //   telefono,
+  //   carrera,
+  //   semestre,
+  //   actividad,
+  // } = req.body;
+  const nombre = req.body.nombre;
+  const paterno = req.body.paterno;
+  const materno = req.body.materno;
+  const carrera = req.body.carrera;
+  const numero = req.body.numero;
+  const telefono = req.body.telefono;
+  const semestre = req.body.semestre;
+  const actividad = req.body.actividad;
 
   nombre = nombre.toUpperCase;
   paterno = paterno.toUpperCase;
