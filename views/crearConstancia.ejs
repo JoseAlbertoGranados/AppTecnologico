@@ -22,7 +22,7 @@
 
     <% if(results){ %>
         <input id="nc" type="text" disabled value="<%= results.numero_control %>">
-        <input id="nombre" type="text" disabled value="<%= alumno.nombre %> <%= alumno.apellido_paterno %> <%= alumno.apellido_materno %>">
+        <input id="nombre" type="text" disabled value="<%= results.nombre %> <%= results.apellido_paterno %> <%= results.apellido_materno %>">
         <!-- <input id="apellido-paterno" type="text" disabled value="<%= results.apellido_paterno %>"> -->
         <!-- <input id="apellido-materno" type="text" disabled value="<%= results.apellido_materno %>"> -->
         <input id="carrera" type="text" disabled value="<%= results.carrera %>">
