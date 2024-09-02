@@ -798,6 +798,7 @@ app.post("/update", (req, res) => {
     telefono,
     carrera,
     semestre,
+    actividad,
   } = req.body;
 
   //Conexión a la BASE DE DATOS y realizar UPDATE
@@ -813,6 +814,7 @@ app.post("/update", (req, res) => {
         telefono: telefono,
         carrera: carrera,
         semestre: semestre,
+        actividad: actividad,
       },
       nc,
     ],
