@@ -54,7 +54,7 @@ app.get("/crearConstancia/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
 
   conection.query(
-    "SELECT * FROM alumnos WHERE numero_control = ?",
+    "SELECT * FROM alumnos, actividades WHERE numero_control = ? AND idActividad = alumnos.actividad",
     [numero_control],
     (error, results) => {
       if (error) {
