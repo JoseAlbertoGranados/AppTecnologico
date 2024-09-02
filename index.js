@@ -54,7 +54,7 @@ app.get("/crearConstancia/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
 
   conection.query(
-    "SELECT numero_control, UPPER(nombre) AS nombre, UPPER(alumnos.apellido_paterno) AS apellido_paterno, UPPER(alumnos.apellido_materno) AS apellido_materno, UPPER(carrera) AS carrera, telefono, semestre, UPPER(actividades.tipoActividad) AS tipoActividad, UPPER(actividades.actividad) AS actividad, UPPER(actividades.promotor) AS promotor, UPPER(actividades.apellido_paterno) AS apellidoPpromotor, UPPER(actividades.apellido_materno) AS apellidoMpromotor FROM alumnos, actividades WHERE numero_control = ? AND idActividad = alumnos.actividad",
+    "SELECT numero_control, UPPER(nombre) AS nombre, UPPER(alumnos.apellido_paterno) AS apellido_paterno, UPPER(alumnos.apellido_materno) AS apellido_materno, UPPER(carrera) AS carrera, telefono, semestre, UPPER(actividades.tipoActividad) AS tipoActividad, UPPER(actividades.actividad) AS actividad, UPPER(actividades.promotor) AS promotor, UPPER(actividades.apellido_paterno) AS apellidoPpromotor, UPPER(actividades.apellido_materno) AS apellidoMpromotor FROM alumnos, actividades WHERE numero_control = ? AND actividades.idActividad = alumnos.actividad",
     [numero_control],
     (error, results) => {
       if (error) {
