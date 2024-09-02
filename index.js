@@ -858,7 +858,7 @@ app.get("/editarAlumnos/:numero_control", (req, res) => {
         res.send("Error en la busqueda de datos");
       } else {
         res.render("editarAlumnos", {
-          results: results[0],
+          results: results,
         });
       }
     }
