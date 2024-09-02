@@ -60,7 +60,7 @@ app.get("/crearConstancia/:numero_control", (req, res) => {
       if (error) {
         res.send("Error en la busqueda de datos");
       } else {
-        res.render("documentos", {
+        res.render("crearConstancia", {
           results: results[0],
         });
       }
