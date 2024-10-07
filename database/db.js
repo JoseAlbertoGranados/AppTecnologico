@@ -2,12 +2,20 @@ import mysql2 from "mysql2";
 import dotenv from "dotenv";
 dotenv.config();
 
-const conection = mysql2.createConnection({
+/* const conection = mysql2.createConnection({
   database: process.env.DATABASE,
   user: process.env.USER,
   port: process.env.PORT,
   host: process.env.HOST,
   password: process.env.PASSWORD,
+}); */
+
+const conection = mysql2.createConnection({
+  database: process.env.MYSQL_DATABASE,
+  user: process.env.MYSQLUSER,
+  port: process.env.MYSQLPORT,
+  host: process.env.MYSQLHOST,
+  password: process.env.MYSQLPASSWORD,
 });
 
 try {
