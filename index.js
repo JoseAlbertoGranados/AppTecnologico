@@ -868,9 +868,9 @@ app.get("/listaPromotores", (req, res) => {
 // });
 
 //Ruta para probar el GET y POS
-app.get("/editarAlumnos/:numero_control", (req, res) => {
+app.get("/obtener/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
-  res.render("editarAlumnos", {
+  res.render("obtener", {
     numero_control,
   });
 });
