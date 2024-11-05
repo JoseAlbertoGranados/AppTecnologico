@@ -869,17 +869,26 @@ app.get("/listaPromotores", (req, res) => {
 
 //Ruta para probar el GET y POS
 app.get("/obtener/:numero_control", (req, res) => {
+  mysql.createConnection({ multipleStatements: true });
   const numero_control = req.params.numero_control;
   try {
-    const [alumno] = conection.query(
-      "SELECT * FROM alumnos where numero_control = ?",
-      [numero_control]
-    );
+    var queries = [
+      "SELECT * FROM alumnos WHERE numero_control = ?",
+      [numero_control],
+      "SELECT * FROM actividades",
+    ];
 
-    const [actividades] = conection.query("SELECT * FROM actividades");
+    conection.query(queries.join(";"), (error, results, fields) => {
+      if (error) {
+        res.send(error);
+      }
+      res.render("obtener", {
+        results: results[0],
+        actividades: fields,
+      });
+    });
 
     /* res.json({ results: alumno, data2: actividades }); */
-    res.render("obtener", { results: alumno });
   } catch (error) {
     console.log("Error en la consulta");
     res.status(500).send(error);
