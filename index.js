@@ -871,22 +871,23 @@ app.get("/listaPromotores", (req, res) => {
 app.get("/obtener/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
   try {
-    var queries = [
+    conection.query(
       "SELECT * FROM alumnos WHERE numero_control = ?",
       [numero_control],
-      "SELECT * FROM actividades",
-    ];
-
-    conection.query(queries.join(";"), (error, results, fields) => {
-      if (error) {
-        res.send(error);
+      (error, results) => {
+        if (error) {
+          res.send("Error en la busqueda de datos");
+        }
       }
-      res.render("obtener", {
-        results: results,
-        actividades: fields,
-      });
+    );
+
+    conection.query("SELECT * FROM actividades", (error, results2) => {
+      if (error) {
+        res.send("Error en la busqueda de datos");
+      }
     });
 
+    res.render("obtener", { results: results, results2: results2 });
     /* res.json({ results: alumno, data2: actividades }); */
   } catch (error) {
     console.log("Error en la consulta");
