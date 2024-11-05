@@ -40,16 +40,16 @@
         </ul>
       </nav>
       <div id="ventana" class="ventana">
-        <!-- <% if(results){ %> -->
+        <% if(results){ %>
             <section class="container">
               <header>Datos de alumno a editar</header>
               <form action="/update" method="POST" class="form">
                 <div class="input-box">
                   <label>Número de control</label>
-                  <input id="nc" name="nc" type="text" value="numero_control" />
+                  <input id="nc" name="nc" type="text" value="<%= numero_control %>" />
                 </div>
                 
-                <!-- <div class="input-box">
+                <div class="input-box">
                     <label>Nombre Alumno</label>
                     <input id="nombre" name="nombre" type="text" value="<%= results.nombre %>" />
                 </div>
@@ -85,12 +85,12 @@
                       <label>Actividad</label>
                       <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
                     </div>
-                </div> -->
+                </div>
 
                 <button>Actualizar</button>
               </form>
             </section>
-            <!-- <% } %> -->
+            <% } %>
       
       </div>
     </div>

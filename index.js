@@ -869,10 +869,18 @@ app.get("/listaPromotores", (req, res) => {
 
 //Ruta para probar el GET y POS
 app.get("/obtener/:numero_control", (req, res) => {
-  const numero_control = req.params.numero_control;
-  res.render("obtener", {
-    numero_control: numero_control,
-  });
+  try {
+    const [alumno] = conection.query(
+      "SELECT * FROM alumnos where numero_control = ?, [numero_control]"
+    );
+
+    const [actividades] = conection.query("SELECT * FROM actividades");
+
+    res.json({ results: alumno, data2: actividades });
+  } catch (error) {
+    console.log("Error en la consulta");
+    res.status(500).send("Error en la consulta");
+  }
 });
 
 //Visualizar las actividades
