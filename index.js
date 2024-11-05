@@ -882,7 +882,7 @@ app.get("/obtener/:numero_control", (req, res) => {
         res.send(error);
       }
       res.render("obtener", {
-        results: results[0],
+        results: results,
         actividades: fields,
       });
     });
