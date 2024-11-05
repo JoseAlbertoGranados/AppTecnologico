@@ -849,22 +849,30 @@ app.get("/listaPromotores", (req, res) => {
 });
 
 //Ruta para editar registros de alumnos
+// app.get("/editarAlumnos/:numero_control", (req, res) => {
+//   const numero_control = req.params.numero_control;
+
+//   conection.query(
+//     "SELECT * FROM alumnos WHERE numero_control = ?",
+//     [numero_control],
+//     (error, results) => {
+//       if (error) {
+//         res.send("Error en la busqueda de datos");
+//       } else {
+//         res.render("editarAlumnos", {
+//           results: results[0],
+//         });
+//       }
+//     }
+//   );
+// });
+
+//Ruta para probar el GET y POS
 app.get("/editarAlumnos/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
-
-  conection.query(
-    "SELECT * FROM alumnos WHERE numero_control = ?",
-    [numero_control],
-    (error, results) => {
-      if (error) {
-        res.send("Error en la busqueda de datos");
-      } else {
-        res.render("editarAlumnos", {
-          results: results[0],
-        });
-      }
-    }
-  );
+  res.render("editarAlumnos", {
+    numero_control,
+  });
 });
 
 //Visualizar las actividades
