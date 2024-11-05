@@ -880,7 +880,7 @@ app.get("/obtener/:numero_control", (req, res) => {
         conection.query("SELECT * FROM actividades", (error, results2) => {
           if (error) res.send("Error en la busqueda de datos");
           console.log({ results: results[0], actividades: results2 });
-          res.render("obtener", { results: results[0], resultados2: results2 });
+          res.render("obtener", { results: results[0], actividades: results2 });
         });
       }
     );

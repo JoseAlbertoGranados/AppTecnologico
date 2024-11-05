@@ -81,10 +81,13 @@
                       <label>Semestre</label>
                       <input type="text" id="semestre" name="semestre"  value="<%= results.semestre %>" />
                     </div>
-                    <div class="input-box">
-                      <label>Actividad</label>
-                      <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
-                    </div>
+                    <label>Selecciona una actividad:</label>
+               <select name="actividad" id="actividad">
+                  <option><%= results.actividad %></option>
+            <% if (actividades){ actividades.forEach( (actividad) => {  %>
+                  <option value="<%= actividades.idActividad %> "> <%= actividad.actividad %> - Impartida Por - <%= actividad.promotor %> </option>
+            <% }) } %>
+               </select>  
                 </div>
 
                 <button>Actualizar</button>
