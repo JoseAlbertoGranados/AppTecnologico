@@ -875,19 +875,15 @@ app.get("/obtener/:numero_control", (req, res) => {
       "SELECT * FROM alumnos WHERE numero_control = ?",
       [numero_control],
       (error, results) => {
-        if (error) {
-          res.send("Error en la busqueda de datos");
-        }
+        if (error) res.send("Error en la busqueda de datos");
+
+        conection.query("SELECT * FROM actividades", (error, results2) => {
+          if (error) res.send("Error en la busqueda de datos");
+
+          res.render("obtener", { results: results, resultados2: results2 });
+        });
       }
     );
-
-    conection.query("SELECT * FROM actividades", (error, results2) => {
-      if (error) {
-        res.send("Error en la busqueda de datos");
-      }
-    });
-
-    res.render("obtener", { results: results, results2: results2 });
     /* res.json({ results: alumno, data2: actividades }); */
   } catch (error) {
     console.log("Error en la consulta");
