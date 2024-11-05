@@ -878,7 +878,8 @@ app.get("/obtener/:numero_control", (req, res) => {
 
     const [actividades] = conection.query("SELECT * FROM actividades");
 
-    res.json({ results: alumno, data2: actividades });
+    /* res.json({ results: alumno, data2: actividades }); */
+    res.render("obtener", { results: alumno });
   } catch (error) {
     console.log("Error en la consulta");
     res.status(500).send(error);
