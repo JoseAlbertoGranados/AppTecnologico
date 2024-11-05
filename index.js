@@ -871,7 +871,7 @@ app.get("/listaPromotores", (req, res) => {
 app.get("/obtener/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
   res.render("obtener", {
-    numero_control,
+    numero_control: numero_control,
   });
 });
 
