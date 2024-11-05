@@ -869,7 +869,6 @@ app.get("/listaPromotores", (req, res) => {
 
 //Ruta para probar el GET y POS
 app.get("/obtener/:numero_control", (req, res) => {
-  mysql.createConnection({ multipleStatements: true });
   const numero_control = req.params.numero_control;
   try {
     var queries = [
