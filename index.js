@@ -869,9 +869,11 @@ app.get("/listaPromotores", (req, res) => {
 
 //Ruta para probar el GET y POS
 app.get("/obtener/:numero_control", (req, res) => {
+  const numero_control = req.params.numero_control;
   try {
     const [alumno] = conection.query(
-      "SELECT * FROM alumnos where numero_control = ?, [numero_control]"
+      "SELECT * FROM alumnos where numero_control = ?",
+      [numero_control]
     );
 
     const [actividades] = conection.query("SELECT * FROM actividades");
