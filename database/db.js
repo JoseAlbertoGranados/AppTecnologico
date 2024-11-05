@@ -1,7 +1,7 @@
 import mysql2 from "mysql2";
 import dotenv from "dotenv";
 dotenv.config();
-mysql2.createConnection({ multipleStatements: true });
+
 const conection = mysql2.createConnection({
   database: process.env.DATABASE,
   user: process.env.USER,
