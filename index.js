@@ -881,7 +881,7 @@ app.get("/obtener/:numero_control", (req, res) => {
     res.json({ results: alumno, data2: actividades });
   } catch (error) {
     console.log("Error en la consulta");
-    res.status(500).send("Error en la consulta");
+    res.status(500).send(error);
   }
 });
 
