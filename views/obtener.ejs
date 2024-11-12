@@ -79,14 +79,14 @@
                 <div class="column">
                     <div class="input-box">
                       <label>Semestre</label>
-                      <input type="text" id="semestre" name="semestre"  value="<%= results.semestre %>" />
+                      <input type="number" id="semestre" name="semestre"  value="<%= results.semestre %>" />
                     </div>
 					<div class="input-box">
                     <label>Selecciona una actividad:</label>
                <select name="actividad" id="actividad">
-                  <option value="<%= results.actividad %>"><%= results.actividadPromo %> - impartida por <%= results.promotor %> </option>
+                  <option value="<%=results.actividad%>"><%= results.actividadPromo %> - impartida por <%= results.promotor %> </option>
             <% if (actividades){ actividades.forEach( (actividad) => {  %>
-                  <option value="<%= actividad.idActividad %> "> <%= actividad.actividad %> - Impartida Por - <%= actividad.promotor %> </option>
+                  <option value="<%=actividad.idActividad%>"> <%= actividad.actividad %> - Impartida Por - <%= actividad.promotor %> </option>
             <% }) } %>
                </select>
 				</div>  
