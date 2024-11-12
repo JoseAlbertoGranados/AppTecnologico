@@ -872,7 +872,7 @@ app.get("/obtener/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
   try {
     conection.query(
-      "SELECT numero_control, alumnos.nombre, alumnos.apellido_paterno, alumnos.apellido_materno, carrera, telefono, semestre, alumnos.actividad, idactividad, promotor, actividades.apellido_paterno, actividades.apellido_materno FROM alumnos, actividades.actividad WHERE numero_control = ? AND actividades.idactividad = alumnos.actividad",
+      "SELECT alumnos.numero_control, alumnos.nombre, alumnos.apellido_paterno, alumnos.apellido_materno, alumnos.carrera, alumnos.telefono, alumnos.semestre, alumnos.actividad, actividades.idactividad, actividades.promotor, actividades.apellido_paterno, actividades.apellido_materno FROM alumnos, actividades WHERE numero_control = ? AND actividades.idactividad = alumnos.actividad",
       [numero_control],
       (error, results) => {
         if (error) res.send("Error en la busqueda de datos");
