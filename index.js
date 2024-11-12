@@ -872,7 +872,7 @@ app.get("/obtener/:numero_control", (req, res) => {
   const numero_control = req.params.numero_control;
   try {
     conection.query(
-      "SELECT * FROM alumnos WHERE numero_control = ?",
+      "SELECT * FROM alumnos, actividades WHERE numero_control = ? AND idactividad = actividad",
       [numero_control],
       (error, results) => {
         if (error) res.send("Error en la busqueda de datos");
