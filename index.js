@@ -167,11 +167,11 @@ app.post("/guardaPromotor", (req, res) => {
     horario,
     lugar,
     tipoActividad,
-    numeroTelefono,
+    telefono,
   } = req.body;
 
   conection.query(
-    "INSERT INTO actividades VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO actividades2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
     [
       idActividad,
       nombre,
@@ -181,7 +181,7 @@ app.post("/guardaPromotor", (req, res) => {
       horario,
       lugar,
       tipoActividad,
-      numeroTelefono,
+      telefono,
     ],
     (error, results) => {
       if (error) {
