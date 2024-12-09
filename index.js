@@ -111,6 +111,9 @@ app.post("/actualizaPromotor", (req, res) => {
     apellido_materno,
     telefono,
     actividad,
+    tipoActividad,
+    horario,
+    lugar,
   } = req.body;
 
   //Conexión a la BASE DE DATOS y realizar UPDATE
@@ -123,7 +126,11 @@ app.post("/actualizaPromotor", (req, res) => {
         promotor: promotor,
         apellido_paterno: apellido_paterno,
         apellido_materno: apellido_materno,
-        actividad,
+        telefono: telefono,
+        actividad: actividad,
+        tipoActividad: tipoActividad,
+        horario: horario,
+        lugar: lugar,
       },
       idActividad,
     ],
