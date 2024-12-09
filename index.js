@@ -109,6 +109,7 @@ app.post("/actualizaPromotor", (req, res) => {
     promotor,
     apellido_paterno,
     apellido_materno,
+    telefono,
     actividad,
   } = req.body;
 

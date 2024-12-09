@@ -42,7 +42,7 @@
       <div id="ventana" class="ventana">
         <% if(results){ %>
             <section class="container">
-              <header>Datos del promotor a eliminar</header>
+              <header>Datos del promotor a editar</header>
               <form action="/actualizaPromotor" method="POST" class="form">
                 <div class="input-box">
                   <label>Número de control</label>
@@ -65,14 +65,33 @@
                     </div>
                   </div>
         
+				  <div class="input-box">
+					<label>Telefono</label>
+					<input type="text" id="telefono" name="telefono"  value="<%= results.telefono %>" />
+				  </div>
                 
                 
-                
-                    
+				  <div class="column">
                     <div class="input-box">
                       <label>Actividad</label>
                       <input type="text" id="actividad" name="actividad"  value="<%= results.actividad %>" />
                     </div>
+
+					<div class="input-box">
+						<label>Tipo Actividad</label>
+						<input type="text" id="tipoActividad" name="tipoActividad"  value="<%= results.tipoActividad %>" />
+					</div>
+				</div>
+
+				<div class="input-box">
+					<label>Horario</label>
+					<input type="text" id="horario" name="horario"  value="<%= results.horario %>" />
+				</div>
+
+				<div class="input-box">
+					<label>Lugar</label>
+					<input type="text" id="lugar" name="lugar"  value="<%= results.lugar %>" />
+				</div>
                 
                 
                 <button>Actualizar</button>
