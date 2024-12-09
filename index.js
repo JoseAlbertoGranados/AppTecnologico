@@ -167,7 +167,7 @@ app.post("/guardaPromotor", (req, res) => {
     horario,
     lugar,
     tipoActividad,
-    telefono,
+    numeroTelefono,
   } = req.body;
 
   conection.query(
@@ -181,7 +181,7 @@ app.post("/guardaPromotor", (req, res) => {
       horario,
       lugar,
       tipoActividad,
-      telefono,
+      numeroTelefono,
     ],
     (error, results) => {
       if (error) {
@@ -192,7 +192,8 @@ app.post("/guardaPromotor", (req, res) => {
           name: req.session.name,
           alert: true,
           alertTitle: "Error",
-          alertMessage: "La actividad y promotor ya están registrados",
+          alertMessage:
+            "La actividad y promotor ya están registrados o ha ocurrido un error",
           alertIcon: "danger",
           showConfirmButton: true,
           timer: false,
@@ -207,8 +208,7 @@ app.post("/guardaPromotor", (req, res) => {
           name: req.session.name,
           alert: true,
           alertTitle: "Registrado",
-          alertMessage:
-            "La actividad ha sido registrada o ha ocurrido un error",
+          alertMessage: "La actividad ha sido registrada",
           alertIcon: "success",
           showConfirmButton: false,
           timer: 1500,
