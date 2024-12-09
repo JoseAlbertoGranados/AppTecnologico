@@ -207,7 +207,8 @@ app.post("/guardaPromotor", (req, res) => {
           name: req.session.name,
           alert: true,
           alertTitle: "Registrado",
-          alertMessage: "La actividad ha sido registrada",
+          alertMessage:
+            "La actividad ha sido registrada o ha ocurrido un error",
           alertIcon: "success",
           showConfirmButton: false,
           timer: 1500,
