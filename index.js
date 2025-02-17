@@ -244,7 +244,8 @@ app.get("/registraAlumno", (req, res) => {
   });
 });
 
-app.get("/inscripcion", (req, res) => {
+//Página donde se inscriben los alumnos
+/* app.get("/inscripcion", (req, res) => {
   conection.query("SELECT * FROM actividades", (error, resultados) => {
     if (error) {
       res.send("Error en la conexión");
@@ -254,6 +255,11 @@ app.get("/inscripcion", (req, res) => {
       });
     }
   });
+}); */
+
+//Página cuando se cierran inscripciones
+app.get("/inscripcion", (req, res) => {
+  res.render("cerrado");
 });
 
 //Incribir Alumnos
